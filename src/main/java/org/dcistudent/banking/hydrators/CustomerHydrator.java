@@ -36,6 +36,7 @@ public final class CustomerHydrator extends AbstractHydrator {
         entity.setUsername(customer.getUsername());
         entity.setPassword(customer.getPassword());
         entity.setFirstName(customer.getFirstName());
+        entity.setAccount(customer.getAccount());
 
         return entity;
     }
