@@ -17,4 +17,15 @@ public final class Account implements EntitiyInterface {
     private Double balance = 0.0;
     @NonNull
     private Integer overdraftCount = 0;
+
+    @Override
+    public String toString() {
+        return this.getId() +
+                "," + this.getCustomerId() +
+                "," + this.getPin() +
+                "," + this.getAccountType() +
+                "," + this.getBalance() +
+                "," + this.getOverdraftCount()
+        ;
+    }
 }

@@ -16,4 +16,14 @@ public final class Customer implements EntitiyInterface {
     private String firstName;
     @NonNull
     private AccountInterface account;
+
+    @Override
+    public String toString() {
+        return this.getId() +
+                "," + this.getUsername() +
+                "," + this.getPassword() +
+                "," + this.getFirstName() +
+                "," + this.getAccount().getId()
+        ;
+    }
 }
