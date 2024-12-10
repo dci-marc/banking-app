@@ -3,18 +3,20 @@ package org.dcistudent.banking.models;
 import lombok.*;
 import org.dcistudent.banking.exceptions.validations.customers.PasswordValidationException;
 import org.dcistudent.banking.exceptions.validations.customers.UsernameValidationException;
+import org.dcistudent.banking.factories.AccountFactory;
 import org.dcistudent.banking.interfaces.models.AccountInterface;
+import org.dcistudent.banking.interfaces.models.CustomerInterface;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 @Getter @Setter
-public final class Customer {
+public final class Customer implements CustomerInterface {
     @NonNull
     private String id;
     @NonNull
-    private String username;
+    private String username = "";
     @NonNull
     private String password = "";
     @NonNull
@@ -23,7 +25,7 @@ public final class Customer {
     private AccountInterface account;
     private static final Integer PASSWORD_MIN_LENGTH = 6;
 
-    public Customer setUsername(String username) {
+    public void setUsername(String username) {
         if (username.isBlank()) {
             throw new UsernameValidationException("Username cannot be empty.");
         }
@@ -33,10 +35,9 @@ public final class Customer {
         }
 
         this.username = username;
-        return this;
     }
 
-    public Customer setPassword(String password) throws NoSuchAlgorithmException {
+    public void setPassword(String password) throws NoSuchAlgorithmException {
         if (password.isBlank()) {
             throw new PasswordValidationException("Password cannot be empty.");
         }
@@ -48,7 +49,6 @@ public final class Customer {
         }
 
         this.password = this.hashPassword(password);
-        return this;
     }
 
     private String hashPassword(String password) throws NoSuchAlgorithmException {
@@ -67,5 +67,15 @@ public final class Customer {
         } catch (NoSuchAlgorithmException e) {
             throw e;
         }
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(this.getFirstName());
+        sb.append(" (");
+        sb.append(AccountFactory.ACCOUNT_TYPES.get(this.getAccount().getAccountType()));
+        sb.append(" Account)");
+        return sb.toString();
     }
 }
