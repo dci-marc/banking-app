@@ -54,11 +54,19 @@ public abstract class AbstractManager implements AbstractManagerInterface {
 
     public void persist(HydratorInterface entityHydrator, EntitiyInterface entity) {
         Map<String, EntitiyInterface> map = this.findAll(entityHydrator);
+
+        if (this.findById(entityHydrator, entity.getId()) instanceof EntitiyInterface == false) {
+            map.put(entity.getId(), entity);
+            this.persist(entityHydrator, map);
+            return;
+        }
+
         map.forEach((k, v) -> {
             if (v.getId().equals(entity.getId())) {
                 map.put(k, entity);
             }
         });
+
         this.persist(entityHydrator, map);
     }
 
