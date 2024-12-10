@@ -8,6 +8,7 @@ import org.dcistudent.banking.interfaces.managers.AbstractManagerInterface;
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
 public abstract class AbstractManager implements AbstractManagerInterface {
     private final String filePath;
@@ -55,17 +56,19 @@ public abstract class AbstractManager implements AbstractManagerInterface {
     public void persist(HydratorInterface entityHydrator, EntitiyInterface entity) {
         Map<String, EntitiyInterface> map = this.findAll(entityHydrator);
 
-        if (this.findById(entityHydrator, entity.getId()) instanceof EntitiyInterface == false) {
+        try {
+            this.findById(entityHydrator, entity.getId());
+
+            map.forEach((k, v) -> {
+                if (v.getId().equals(entity.getId())) {
+                    map.put(k, entity);
+                }
+            });
+        } catch(NoSuchElementException e) {
             map.put(entity.getId(), entity);
             this.persist(entityHydrator, map);
             return;
         }
-
-        map.forEach((k, v) -> {
-            if (v.getId().equals(entity.getId())) {
-                map.put(k, entity);
-            }
-        });
 
         this.persist(entityHydrator, map);
     }
