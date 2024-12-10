@@ -3,6 +3,8 @@ package org.dcistudent.banking.hydrators;
 import org.dcistudent.banking.entities.Customer;
 import org.dcistudent.banking.interfaces.models.CustomerInterface;
 
+import java.security.NoSuchAlgorithmException;
+
 public final class CustomerHydrator extends AbstractHydrator {
     public Customer hydrate(String[] fields) {
         Customer customer = new Customer();
@@ -20,11 +22,21 @@ public final class CustomerHydrator extends AbstractHydrator {
         customer.setUsername(customerEntity.getUsername());
         try {
             customer.setPassword(customerEntity.getPassword());
-        } catch (java.security.NoSuchAlgorithmException e) {
+        } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
         }
         customer.setFirstName(customerEntity.getFirstName());
 
         return customer;
+    }
+
+    public static Customer hydrate(CustomerInterface customer) {
+        Customer entity = new Customer();
+        entity.setId(customer.getId());
+        entity.setUsername(customer.getUsername());
+        entity.setPassword(customer.getPassword());
+        entity.setFirstName(customer.getFirstName());
+
+        return entity;
     }
 }

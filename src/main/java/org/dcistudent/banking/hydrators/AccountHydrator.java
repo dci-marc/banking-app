@@ -28,4 +28,16 @@ public final class AccountHydrator extends AbstractHydrator {
 
         return account;
     }
+
+    public static Account hydrate(AccountInterface account) {
+        Account entity = new Account();
+        entity.setId(account.getId());
+        entity.setCustomerId(account.getCustomerId());
+        entity.setPin(account.getPin());
+        entity.setAccountType(account.getAccountType());
+        entity.setBalance(account.getBalance());
+        entity.setOverdraftCount(account.getOverdraftCount());
+
+        return entity;
+    }
 }
