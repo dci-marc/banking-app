@@ -9,14 +9,14 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public class AccountFactory {
-    private static final Map<Integer, String> ACCOUNT_TYPES;
+public final class AccountFactory {
+    public static final Map<Integer, String> ACCOUNT_TYPES;
 
     static {
         ACCOUNT_TYPES = new HashMap(Map.of(
-                1, "SilverAccount",
-                2, "GoldAccount",
-                3, "PlatinumAccount"
+                1, "Silver",
+                2, "Gold",
+                3, "Platinum"
         ));
     }
 
