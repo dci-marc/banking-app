@@ -2,6 +2,7 @@ package org.dcistudent.banking.models;
 
 import lombok.*;
 import org.dcistudent.banking.exceptions.transfers.BankTransferException;
+import org.dcistudent.banking.exceptions.validations.PinValidationException;
 import org.dcistudent.banking.interfaces.models.AccountInterface;
 
 @Getter @Setter
@@ -20,6 +21,13 @@ public abstract class AbstractAccount implements AccountInterface {
         this.setId(id);
         this.setLimitWithdrawal(limitWithdrawal);
         this.setLimitDeposit(limitDeposit);
+    }
+
+    public void setPin(Integer pin) {
+        if (pin < 999 || pin > 9999) {
+            throw new PinValidationException("PIN must be a 4-digit number.");
+        }
+        this.pin = pin;
     }
 
     public AccountInterface withdraw(Double amount) {
