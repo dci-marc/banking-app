@@ -1,6 +1,6 @@
 package org.dcistudent.banking.factories;
 
-import org.dcistudent.banking.models.AbstractAccount;
+import org.dcistudent.banking.interfaces.models.AccountInterface;
 import org.dcistudent.banking.models.GoldAccount;
 import org.dcistudent.banking.models.PlatinumAccount;
 import org.dcistudent.banking.models.SilverAccount;
@@ -20,7 +20,7 @@ public final class AccountFactory {
         ));
     }
 
-    public static AbstractAccount create(Integer type) {
+    public static AccountInterface create(Integer type) {
         String accountId;
 
         if (ACCOUNT_TYPES.containsKey(type) == false) {
