@@ -6,8 +6,9 @@ import org.dcistudent.banking.interfaces.models.AccountInterface;
 
 @Getter @Setter
 public abstract class AbstractAccount implements AccountInterface {
-    protected String id;
-    protected String customerId;
+    private String id;
+    private String customerId;
+    private Integer pin;
     private Double balance = 0.0;
     private Double limitWithdrawal;
     private Double limitDeposit;
@@ -23,7 +24,7 @@ public abstract class AbstractAccount implements AccountInterface {
 
     public AccountInterface withdraw(Double amount) {
         if (amount < 10) {
-            throw new BankTransferException("Withdrawal amount must be at least than 10.");
+            throw new BankTransferException("Withdrawal amount must be at least 10.");
         }
 
         if (amount > this.getLimitWithdrawal()) {
@@ -40,7 +41,7 @@ public abstract class AbstractAccount implements AccountInterface {
 
     public AccountInterface deposit(Double amount) {
         if (amount < 10) {
-            throw new BankTransferException("Deposit amount must be at least than 10.");
+            throw new BankTransferException("Deposit amount must be at least  10.");
         }
 
         if (amount > this.getLimitDeposit()) {
