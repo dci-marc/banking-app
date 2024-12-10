@@ -12,5 +12,9 @@ public final class Account implements EntitiyInterface {
     @NonNull
     private Integer pin;
     @NonNull
-    private String accountType;
+    private Integer accountType;
+    @NonNull
+    private Double balance = 0.0;
+    @NonNull
+    private Integer overdraftCount = 0;
 }
