@@ -25,4 +25,12 @@ public final class AccountManager extends AbstractManager {
     public Account findById(String id) {
         return (Account) super.findById(new AccountHydrator(), id);
     }
+
+    public Account findByCustomerId(String customerId) {
+        return this.findAll().values().stream()
+                .filter(account -> account.getCustomerId().equals(customerId))
+                .findFirst()
+                .orElseThrow()
+        ;
+    }
 }

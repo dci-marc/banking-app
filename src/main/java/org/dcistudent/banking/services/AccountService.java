@@ -4,11 +4,10 @@ import org.dcistudent.banking.exceptions.validations.PinValidationException;
 import org.dcistudent.banking.factories.AccountFactory;
 import org.dcistudent.banking.hydrators.AccountHydrator;
 import org.dcistudent.banking.interfaces.models.AccountInterface;
+import org.dcistudent.banking.interfaces.models.CustomerInterface;
 import org.dcistudent.banking.managers.AccountManager;
-import org.dcistudent.banking.models.*;
 
 import java.util.InputMismatchException;
-import java.util.Optional;
 import java.util.Scanner;
 
 public final class AccountService {
@@ -20,7 +19,7 @@ public final class AccountService {
         this.accountManager = new AccountManager();
     }
 
-    public AccountInterface create(Customer customer) {
+    public AccountInterface create(CustomerInterface customer) {
         AccountInterface account = null;
 
         System.out.println("Select account type:");
@@ -54,5 +53,9 @@ public final class AccountService {
         this.accountManager.persist(new AccountHydrator(), AccountHydrator.hydrate(account));
 
         return account;
+    }
+
+    public AccountInterface getByCustomerId(String customerId) {
+        return AccountHydrator.hydrate(this.accountManager.findByCustomerId(customerId));
     }
 }
