@@ -27,6 +27,7 @@ public final class CustomerService {
         CustomerInterface customer = new Customer();
         String username;
 
+        ScannerRenderer.renderSeparated("Customer Account Creation");
         ScannerRenderer.renderInput("Enter your username");
         username = String.valueOf(this.scanner.next());
         try {
@@ -71,5 +72,19 @@ public final class CustomerService {
         }
 
         return customer;
+    }
+
+    public void resetPassword(CustomerInterface customer) throws NoSuchAlgorithmException {
+        String password;
+        ScannerRenderer.renderSeparated("Password Reset");
+        ScannerRenderer.renderInput("Enter your new password");
+        password = this.scanner.next();
+        if (customer.verifyPassword(password)) {
+            throw new UsernameValidationException("New password must be different from the old one.");
+        }
+
+        customer.setPassword(customer.hashPassword(password));
+
+        this.customerManager.persist(new CustomerHydrator(), CustomerHydrator.hydrate(customer));
     }
 }

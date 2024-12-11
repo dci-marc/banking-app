@@ -24,6 +24,7 @@ public final class AccountService {
         AccountInterface account = null;
         Integer accountType;
 
+        ScannerRenderer.renderSeparated("Bank Account Creation");
         System.out.println("Select account type:");
         System.out.println("1. Silver");
         System.out.println("2. Gold");
@@ -39,6 +40,7 @@ public final class AccountService {
         }
         account.setCustomerId(customer.getId());
 
+        ScannerRenderer.renderSeparated("Bank Account Security");
         ScannerRenderer.renderInput("Enter your 4-digit PIN code");
         try {
             account.setPin(scanner.nextInt());

@@ -1,9 +1,11 @@
 package org.dcistudent.banking.controllers;
 
+import org.dcistudent.banking.exceptions.validations.customers.PasswordValidationException;
 import org.dcistudent.banking.interfaces.models.CustomerInterface;
 import org.dcistudent.banking.renderers.ScannerRenderer;
 import org.dcistudent.banking.services.BankingService;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.Scanner;
 
 public final class BankingController {
@@ -105,17 +107,45 @@ public final class BankingController {
                 ScannerRenderer.renderSeparated("Your balance is: " + this.bankingService.checkBalance());
                 break;
             case 2:
-                this.bankingService.deposit();
+                try {
+                    this.bankingService.deposit();
+                } catch (Exception e) {
+                    ScannerRenderer.renderSeparated(e.getMessage());
+                    this.customerMenu();
+                }
+
+                ScannerRenderer.renderSeparated("Success! Your new balance is: " + this.bankingService.checkBalance());
                 break;
             case 3:
-                this.bankingService.withdraw();
+                try {
+                    this.bankingService.withdraw();
+                } catch (Exception e) {
+                    ScannerRenderer.renderSeparated(e.getMessage());
+                    this.customerMenu();
+                }
+
+                ScannerRenderer.renderSeparated("Success! Your new balance is: " + this.bankingService.checkBalance());
                 break;
-//            case 4:
-//                this.transfer();
-//                break;
-//            case 5:
-//                this.logout();
-//                break;
+            case 4:
+                try {
+                    this.bankingService.resetPassword();
+                } catch (NoSuchAlgorithmException | PasswordValidationException e) {
+                    ScannerRenderer.renderSeparated(e.getMessage());
+                    this.customerMenu();
+                }
+
+                ScannerRenderer.renderSeparated("Success! Please login again.");
+                this.loggedIn = false;
+                this.bankingService.closeSession();
+                this.sessionMenu();
+                break;
+            case 5:
+                this.loggedIn = false;
+                this.bankingService.closeSession();
+                ScannerRenderer.renderSeparated("Bye, bye.");
+
+                this.sessionMenu();
+                break;
             default:
                 ScannerRenderer.renderSeparated("Invalid option. Please Try again.");
         }
