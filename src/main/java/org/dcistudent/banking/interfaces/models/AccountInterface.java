@@ -9,6 +9,7 @@ public interface AccountInterface {
     public void setCustomerId(String customerId);
     public Integer getPin();
     public void setPin(Integer pin);
+    public String getAccountName();
     public Integer getAccountType();
     public void setAccountType(Integer accountType);
     public Double getBalance();

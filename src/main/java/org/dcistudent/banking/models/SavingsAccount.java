@@ -4,8 +4,6 @@ import lombok.*;
 import org.dcistudent.banking.exceptions.validations.accounts.LimitValidationException;
 import org.dcistudent.banking.interfaces.models.AccountInterface;
 
-import javax.naming.LimitExceededException;
-
 @Getter @Setter
 public final class SavingsAccount extends AbstractAccount {
     private Integer accountType = 4;

@@ -52,6 +52,10 @@ public abstract class AbstractAccount implements AccountInterface {
         this.limitWithdrawalCustom = limit;
     }
 
+    public String getAccountName() {
+        return this.getClass().getSimpleName();
+    }
+
     public Integer getOverdraftLimit() {
         return OVERDRAFT_LIMIT;
     }

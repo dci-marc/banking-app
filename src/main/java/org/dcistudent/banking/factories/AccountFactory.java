@@ -1,10 +1,7 @@
 package org.dcistudent.banking.factories;
 
 import org.dcistudent.banking.interfaces.models.AccountInterface;
-import org.dcistudent.banking.models.GoldAccount;
-import org.dcistudent.banking.models.PlatinumAccount;
-import org.dcistudent.banking.models.SavingsAccount;
-import org.dcistudent.banking.models.SilverAccount;
+import org.dcistudent.banking.models.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,7 +15,8 @@ public final class AccountFactory {
                 1, "Silver",
                 2, "Gold",
                 3, "Platinum",
-                4, "Savings"
+                4, "Savings",
+                5, "Checking"
         ));
     }
 
@@ -37,6 +35,7 @@ public final class AccountFactory {
             case 2 -> new GoldAccount(accountId);
             case 3 -> new PlatinumAccount(accountId);
             case 4 -> new SavingsAccount(accountId);
+            case 5 -> new CheckingAccount(accountId);
             default -> throw new IllegalArgumentException("Invalid account type.");
         };
     }

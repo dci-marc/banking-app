@@ -8,6 +8,7 @@ import org.dcistudent.banking.hydrators.AccountHydrator;
 import org.dcistudent.banking.interfaces.models.AccountInterface;
 import org.dcistudent.banking.interfaces.models.CustomerInterface;
 import org.dcistudent.banking.managers.AccountManager;
+import org.dcistudent.banking.models.CheckingAccount;
 import org.dcistudent.banking.renderers.ScannerRenderer;
 
 import java.util.InputMismatchException;
@@ -16,6 +17,11 @@ import java.util.Scanner;
 public final class AccountService {
     private final Scanner scanner;
     private final AccountManager accountManager;
+    private static final String GIRO_ACCOUNT;
+
+    static {
+        GIRO_ACCOUNT = CheckingAccount.class.getSimpleName();
+    }
 
     public AccountService(Scanner scanner) {
         this.scanner = scanner;
@@ -157,6 +163,10 @@ public final class AccountService {
         ScannerRenderer.renderInput("Enter amount to withdraw");
         amount = scanner.nextDouble();
         this.transferPinValidation(account);
+
+        if (account.getAccountName().equals(GIRO_ACCOUNT)) {
+            System.out.println("Instant card balance validation...");
+        }
 
         try {
             account.withdraw(amount);
