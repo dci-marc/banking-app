@@ -2,7 +2,7 @@ package org.dcistudent.banking.managers;
 
 import lombok.NonNull;
 import org.dcistudent.banking.interfaces.HydratorInterface;
-import org.dcistudent.banking.interfaces.entities.EntitiyInterface;
+import org.dcistudent.banking.interfaces.entities.EntityInterface;
 import org.dcistudent.banking.interfaces.managers.AbstractManagerInterface;
 
 import java.io.*;
@@ -17,8 +17,8 @@ public abstract class AbstractManager implements AbstractManagerInterface {
         this.filePath = filePath;
     }
 
-    public Map<String, EntitiyInterface> findAll(HydratorInterface entityHydrator) {
-        Map<String, EntitiyInterface> map = new HashMap<>();
+    public Map<String, EntityInterface> findAll(HydratorInterface entityHydrator) {
+        Map<String, EntityInterface> map = new HashMap<>();
 
         this.getReader().lines().forEach(line -> {
             String[] fields = line.split(",");
@@ -31,7 +31,7 @@ public abstract class AbstractManager implements AbstractManagerInterface {
         return map;
     }
 
-    public EntitiyInterface findById(HydratorInterface entityHydrator, String id) {
+    public EntityInterface findById(HydratorInterface entityHydrator, String id) {
         return this
             .findAll(entityHydrator)
             .values()
@@ -41,20 +41,16 @@ public abstract class AbstractManager implements AbstractManagerInterface {
             .orElseThrow();
     }
 
-    public void persist(HydratorInterface entityHydrator, Map<String, EntitiyInterface> map) {
-        BufferedWriter writer;
-
-        try(FileWriter writerFile = new FileWriter(this.filePath)) {
-            writer = new BufferedWriter(writerFile);
+    public void persist(HydratorInterface entityHydrator, Map<String, EntityInterface> map) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(this.filePath))) {
             writer.write(entityHydrator.hydrate(map));
-            writer.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void persist(HydratorInterface entityHydrator, EntitiyInterface entity) {
-        Map<String, EntitiyInterface> map = this.findAll(entityHydrator);
+    public void persist(HydratorInterface entityHydrator, EntityInterface entity) {
+        Map<String, EntityInterface> map = this.findAll(entityHydrator);
 
         try {
             this.findById(entityHydrator, entity.getId());

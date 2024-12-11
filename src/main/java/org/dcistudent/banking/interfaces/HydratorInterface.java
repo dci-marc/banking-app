@@ -1,14 +1,14 @@
 package org.dcistudent.banking.interfaces;
 
-import org.dcistudent.banking.interfaces.entities.EntitiyInterface;
+import org.dcistudent.banking.interfaces.entities.EntityInterface;
 
 import java.util.Map;
 
 public interface HydratorInterface {
-    static EntitiyInterface hydrate(EntitiyInterface entity) {
+    static EntityInterface hydrate(EntityInterface entity) {
         return entity;
     }
 
-    String hydrate(Map<String, EntitiyInterface> map);
-    EntitiyInterface hydrate(String[] fields);
+    String hydrate(Map<String, EntityInterface> map);
+    EntityInterface hydrate(String[] fields);
 }

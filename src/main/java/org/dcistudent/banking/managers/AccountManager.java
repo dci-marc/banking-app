@@ -2,7 +2,7 @@ package org.dcistudent.banking.managers;
 
 import org.dcistudent.banking.entities.Account;
 import org.dcistudent.banking.hydrators.AccountHydrator;
-import org.dcistudent.banking.interfaces.entities.EntitiyInterface;
+import org.dcistudent.banking.interfaces.entities.EntityInterface;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,7 +15,7 @@ public final class AccountManager extends AbstractManager {
     }
 
     public Map<String, Account> findAll() {
-        Map<String, EntitiyInterface> map = super.findAll(new AccountHydrator());
+        Map<String, EntityInterface> map = super.findAll(new AccountHydrator());
         Map<String, Account> accounts = new HashMap<>();
         map.forEach((k, v) -> accounts.put(k, (Account) v));
 

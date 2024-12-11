@@ -2,7 +2,7 @@ package org.dcistudent.banking.managers;
 
 import org.dcistudent.banking.entities.Customer;
 import org.dcistudent.banking.hydrators.CustomerHydrator;
-import org.dcistudent.banking.interfaces.entities.EntitiyInterface;
+import org.dcistudent.banking.interfaces.entities.EntityInterface;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,7 +15,7 @@ public final class CustomerManager extends AbstractManager {
     }
 
     public Map<String, Customer> findAll() {
-        Map<String, EntitiyInterface> map = super.findAll(new CustomerHydrator());
+        Map<String, EntityInterface> map = super.findAll(new CustomerHydrator());
         Map<String, Customer> customers = new HashMap<>();
         map.forEach((k, v) -> customers.put(k, (Customer) v));
 

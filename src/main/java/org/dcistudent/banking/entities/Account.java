@@ -1,10 +1,10 @@
 package org.dcistudent.banking.entities;
 
 import lombok.*;
-import org.dcistudent.banking.interfaces.entities.EntitiyInterface;
+import org.dcistudent.banking.interfaces.entities.EntityInterface;
 
 @Getter @Setter
-public final class Account implements EntitiyInterface {
+public final class Account implements EntityInterface {
     @NonNull
     private String id;
     @NonNull
