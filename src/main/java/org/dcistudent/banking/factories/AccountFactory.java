@@ -20,6 +20,8 @@ public final class AccountFactory {
         ));
     }
 
+    private AccountFactory() {}
+
     public static AccountInterface create(Integer type) {
         String accountId;
 
