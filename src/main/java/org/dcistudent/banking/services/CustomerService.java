@@ -2,7 +2,6 @@ package org.dcistudent.banking.services;
 
 import org.dcistudent.banking.exceptions.validations.customers.UsernameValidationException;
 import org.dcistudent.banking.hydrators.CustomerHydrator;
-import org.dcistudent.banking.interfaces.models.CustomerInterface;
 import org.dcistudent.banking.managers.CustomerManager;
 import org.dcistudent.banking.models.Customer;
 
@@ -22,8 +21,8 @@ public final class CustomerService {
         this.customerManager = new CustomerManager();
     }
 
-    public CustomerInterface create() throws NoSuchAlgorithmException {
-        CustomerInterface customer = new Customer();
+    public Customer create() throws NoSuchAlgorithmException {
+        Customer customer = new Customer();
         String username;
 
         System.out.println("Enter your username:");
@@ -34,37 +33,13 @@ public final class CustomerService {
         } catch (NoSuchElementException e) {
             customer.setUsername(username);
             System.out.println("Enter your password:");
-            customer.setPassword(customer.hashPassword(String.valueOf(this.scanner.next())));
+            customer.setPassword(String.valueOf(this.scanner.next()));
             System.out.println("Enter your first name:");
             customer.setFirstName(String.valueOf(this.scanner.next()));
             customer.setId(UUID.randomUUID().toString());
             customer.setAccount(this.accountService.create(customer));
 
             this.customerManager.persist(new CustomerHydrator(), CustomerHydrator.hydrate(customer));
-        }
-
-        return customer;
-    }
-
-    public CustomerInterface login() {
-        CustomerInterface customer;
-        String username;
-        String password;
-
-        try {
-            System.out.println("Enter your username:");
-            username = String.valueOf(this.scanner.next());
-            customer = CustomerHydrator.hydrate(this.customerManager.findByUsername(username));
-            customer.setAccount(this.accountService.getByCustomerId(customer.getId()));
-
-            System.out.println("Enter your password:");
-            password = String.valueOf(this.scanner.next());
-
-            if (customer.verifyPassword(password) == false) {
-                throw new UsernameValidationException("Invalid login.");
-            }
-        } catch (NoSuchElementException e) {
-            throw new UsernameValidationException("Invalid login.");
         }
 
         return customer;
