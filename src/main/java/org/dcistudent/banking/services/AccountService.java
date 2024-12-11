@@ -121,10 +121,18 @@ public final class AccountService {
         AccountInterface account = customer.getAccount();
         Double amount;
 
-        ScannerRenderer.renderSeparated("Deposition");
+        ScannerRenderer.renderSeparated(
+                String.format("Deposition (Limit: %f)", account.getLimitDeposit())
+        );
         ScannerRenderer.renderInput("Enter amount to deposit");
         amount = scanner.nextDouble();
-        account.deposit(amount);
+
+        try {
+            account.deposit(amount);
+        } catch (BankTransferException e) {
+            ScannerRenderer.renderSeparated(e.getMessage());
+            this.deposit(customer);
+        }
 
         this.accountManager.persist(new AccountHydrator(), AccountHydrator.hydrate(account));
     }
@@ -133,11 +141,33 @@ public final class AccountService {
         AccountInterface account = customer.getAccount();
         Double amount;
 
-        ScannerRenderer.renderSeparated("Withdrawal");
+        ScannerRenderer.renderSeparated(
+                String.format("Withdrawal (Limit: %f)", account.getLimitWithdrawalCustom())
+        );
         ScannerRenderer.renderInput("Enter amount to withdraw");
         amount = scanner.nextDouble();
-        account.withdraw(amount);
+        this.transferPinValidation(account);
+
+        try {
+            account.withdraw(amount);
+        } catch (BankTransferException e) {
+            ScannerRenderer.renderSeparated(e.getMessage());
+            this.withdraw(customer);
+        }
 
         this.accountManager.persist(new AccountHydrator(), AccountHydrator.hydrate(account));
+    }
+
+    private void transferPinValidation(AccountInterface account) {
+        Integer pin;
+
+        ScannerRenderer.renderSeparated("Transfer Security");
+        ScannerRenderer.renderInput("Enter recipient's 4-digit PIN code");
+        pin = scanner.nextInt();
+
+        if (account.getPin().equals(pin) == false) {
+            ScannerRenderer.renderSeparated("Invalid PIN code.");
+            this.transferPinValidation(account);
+        }
     }
 }
