@@ -6,6 +6,7 @@ import org.dcistudent.banking.exceptions.validations.customers.UsernameValidatio
 import org.dcistudent.banking.factories.AccountFactory;
 import org.dcistudent.banking.interfaces.models.AccountInterface;
 import org.dcistudent.banking.interfaces.models.CustomerInterface;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -48,25 +49,15 @@ public final class Customer implements CustomerInterface {
             );
         }
 
-        this.password = this.hashPassword(password);
+        this.password = password;
     }
 
-    private String hashPassword(String password) throws NoSuchAlgorithmException {
-        try {
-            MessageDigest md = MessageDigest.getInstance("SHA-256");
-            byte[] hash = md.digest(password.getBytes(StandardCharsets.UTF_8));
-            StringBuilder hexString = new StringBuilder(2 * hash.length);
-            for (byte b : hash) {
-                String hex = Integer.toHexString(0xff & b);
-                if (hex.length() == 1) {
-                    hexString.append('0');
-                }
-                hexString.append(hex);
-            }
-            return hexString.toString();
-        } catch (NoSuchAlgorithmException e) {
-            throw e;
-        }
+    public String hashPassword(String password) {
+        return new BCryptPasswordEncoder().encode(password);
+    }
+
+    public Boolean verifyPassword(String password) {
+        return new BCryptPasswordEncoder().matches(password, this.getPassword());
     }
 
     @Override

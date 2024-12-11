@@ -13,4 +13,6 @@ public interface CustomerInterface {
     public void setFirstName(String firstName);
     public AccountInterface getAccount();
     public void setAccount(AccountInterface account);
+    public String hashPassword(String password);
+    public Boolean verifyPassword(String password);
 }
