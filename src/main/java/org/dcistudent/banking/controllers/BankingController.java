@@ -112,7 +112,9 @@ public final class BankingController {
 
         switch (option) {
             case 1:
-                ScannerRenderer.renderSeparated("Your balance is: " + this.bankingService.checkBalance());
+                ScannerRenderer.renderSeparated(
+                        String.format("Your balance is: %.2f", this.bankingService.checkBalance())
+                );
                 break;
             case 2:
                 try {
@@ -122,7 +124,9 @@ public final class BankingController {
                     this.customerMenu();
                 }
 
-                ScannerRenderer.renderSeparated("Success! Your new balance is: " + this.bankingService.checkBalance());
+                ScannerRenderer.renderSeparated(
+                        String.format("Success! Your new balance is: %.2f", this.bankingService.checkBalance())
+                );
                 break;
             case 3:
                 try {
@@ -132,7 +136,9 @@ public final class BankingController {
                     this.customerMenu();
                 }
 
-                ScannerRenderer.renderSeparated("Success! Your new balance is: " + this.bankingService.checkBalance());
+                ScannerRenderer.renderSeparated(
+                        String.format("Success! Your new balance is: %.2f", this.bankingService.checkBalance())
+                );
                 break;
             case 4:
                 try {

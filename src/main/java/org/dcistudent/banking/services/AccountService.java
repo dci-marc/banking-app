@@ -84,7 +84,7 @@ public final class AccountService {
         Double amount;
 
         ScannerRenderer.renderSeparated(
-                String.format("Initial Deposit (Limit: %f)", account.getLimitDeposit())
+                String.format("Initial Deposit (Limit: %.2f)", account.getLimitDeposit())
         );
         ScannerRenderer.renderInput("Enter amount to deposit");
         amount = scanner.nextDouble();
@@ -105,7 +105,7 @@ public final class AccountService {
         Double amount;
 
         ScannerRenderer.renderSeparated(
-                String.format("Withdraw Limit (Limit: %f)", account.getLimitWithdrawal())
+                String.format("Withdraw Limit (Limit: %.2f)", account.getLimitWithdrawal())
         );
         ScannerRenderer.renderInput("Enter amount to set as custom withdrawal limit");
         amount = scanner.nextDouble();
@@ -128,7 +128,7 @@ public final class AccountService {
         Double amount;
 
         ScannerRenderer.renderSeparated(
-                String.format("Deposition (Limit: %f)", account.getLimitDeposit())
+                String.format("Deposition (Limit: %.2f)", account.getLimitDeposit())
         );
         ScannerRenderer.renderInput("Enter amount to deposit");
         amount = scanner.nextDouble();
@@ -148,7 +148,7 @@ public final class AccountService {
         Double amount;
 
         ScannerRenderer.renderSeparated(
-                String.format("Withdrawal (Limit: %f)", account.getLimitWithdrawalCustom())
+                String.format("Withdrawal (Limit: %.2f)", account.getLimitWithdrawalCustom())
         );
 
         if (account.getOverdraftCount() >= account.getOverdraftLimit()) {

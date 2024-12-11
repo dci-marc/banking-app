@@ -36,13 +36,13 @@ public abstract class AbstractAccount implements AccountInterface {
     public void setLimitWithdrawalCustom(Double limit) {
         if(limit > this.getLimitWithdrawal()) {
             throw new LimitValidationException(
-                    String.format("Withdrawal limit of %f exceeds limit of %f.", limit, this.getLimitWithdrawal())
+                    String.format("Withdrawal limit of %.2f exceeds limit of %.2f.", limit, this.getLimitWithdrawal())
             );
         }
         if (limit > this.getLimitWithdrawalCustom()) {
             throw new LimitValidationException(
                     String.format(
-                            "Withdrawal limit of %f exceeds custom limit of %f.", limit, this.getLimitWithdrawalCustom()
+                            "Withdrawal limit of %.2f exceeds custom limit of %.2f.", limit, this.getLimitWithdrawalCustom()
                     )
             );
         }
@@ -67,7 +67,7 @@ public abstract class AbstractAccount implements AccountInterface {
 
         if (amount > this.getLimitWithdrawal()) {
             throw new BankTransferException(
-                    String.format("Withdrawal amount of %f exceeds limit of %f.", amount, this.getLimitWithdrawal())
+                    String.format("Withdrawal amount of %.2f exceeds limit of %.2f.", amount, this.getLimitWithdrawal())
             );
         }
 
@@ -84,7 +84,7 @@ public abstract class AbstractAccount implements AccountInterface {
 
         if (amount > this.getLimitDeposit()) {
             throw new BankTransferException(
-                    String.format("Deposit amount of %f exceeds limit of %f.", amount, this.getLimitDeposit())
+                    String.format("Deposit amount of %.2f exceeds limit of %.2f.", amount, this.getLimitDeposit())
             );
         }
 

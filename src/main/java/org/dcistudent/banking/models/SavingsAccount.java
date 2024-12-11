@@ -18,7 +18,7 @@ public final class SavingsAccount extends AbstractAccount {
     public AccountInterface withdraw(Double amount) throws LimitValidationException {
         if (this.getBalance() - amount < 0) {
             throw new LimitValidationException(
-                    String.format("Insufficient balance. Current balance: %f", this.getBalance())
+                    String.format("Insufficient balance. Current balance: %.2f", this.getBalance())
             );
         }
 
