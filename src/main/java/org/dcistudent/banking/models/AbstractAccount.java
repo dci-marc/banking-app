@@ -56,7 +56,7 @@ public abstract class AbstractAccount implements AccountInterface {
         return OVERDRAFT_LIMIT;
     }
 
-    public AccountInterface withdraw(Double amount) {
+    public AccountInterface withdraw(Double amount) throws LimitValidationException {
         if (amount < 10) {
             throw new BankTransferException("Withdrawal amount must be at least 10.");
         }

@@ -13,7 +13,7 @@ public final class BankingController {
     private final BankingService bankingService;
     private Boolean loggedIn = false;
     private static Integer loginAttempts = 1;
-    private static Integer maxLoginAttempts = 3;
+    private static final Integer MAX_LOGIN_ATTEMPTS = 3;
 
     public static void main(String[] args) {
         new BankingController();
@@ -45,7 +45,7 @@ public final class BankingController {
     }
 
     private void processSessionMenu() {
-        Integer option = null;
+        Integer option;
         CustomerInterface customer;
 
         ScannerRenderer.renderInputChoice();
@@ -71,7 +71,7 @@ public final class BankingController {
                 } catch (Exception e) {
                     loginAttempts++;
                     ScannerRenderer.renderSeparated(e.getMessage());
-                    if (loginAttempts > maxLoginAttempts) {
+                    if (loginAttempts > MAX_LOGIN_ATTEMPTS) {
                         ScannerRenderer.renderSeparated("Bye, bye hacker!.");
                         System.exit(42);
                     }

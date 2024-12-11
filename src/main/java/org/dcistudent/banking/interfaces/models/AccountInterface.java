@@ -1,5 +1,7 @@
 package org.dcistudent.banking.interfaces.models;
 
+import org.dcistudent.banking.exceptions.validations.accounts.LimitValidationException;
+
 public interface AccountInterface {
     public String getId();
     public void setId(String id);
@@ -19,6 +21,6 @@ public interface AccountInterface {
     public Integer getOverdraftCount();
     public void setOverdraftCount(Integer overdraftCount);
     public Integer getOverdraftLimit();
-    public AccountInterface withdraw(Double amount);
+    public AccountInterface withdraw(Double amount) throws LimitValidationException;
     public AccountInterface deposit(Double amount);
 }

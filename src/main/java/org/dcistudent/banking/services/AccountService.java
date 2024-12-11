@@ -28,9 +28,9 @@ public final class AccountService {
 
         ScannerRenderer.renderSeparated("Bank Account Creation");
         System.out.println("Select account type:");
-        System.out.println("1. Silver");
-        System.out.println("2. Gold");
-        System.out.println("3. Platinum");
+        for (Integer key : AccountFactory.ACCOUNT_TYPES.keySet()) {
+            System.out.println(key + ". " + AccountFactory.ACCOUNT_TYPES.get(key));
+        }
         ScannerRenderer.renderInputChoice();
         accountType = scanner.nextInt();
 
@@ -160,7 +160,7 @@ public final class AccountService {
 
         try {
             account.withdraw(amount);
-        } catch (BankTransferException e) {
+        } catch (BankTransferException | LimitValidationException e) {
             ScannerRenderer.renderSeparated(e.getMessage());
             this.withdraw(customer);
         }
