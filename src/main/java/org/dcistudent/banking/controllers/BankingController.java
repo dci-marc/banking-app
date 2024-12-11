@@ -10,8 +10,10 @@ import java.util.Scanner;
 
 public final class BankingController {
     private final Scanner scanner;
-    private Boolean loggedIn = false;
     private final BankingService bankingService;
+    private Boolean loggedIn = false;
+    private static Integer loginAttempts = 1;
+    private static Integer maxLoginAttempts = 3;
 
     public static void main(String[] args) {
         new BankingController();
@@ -43,7 +45,7 @@ public final class BankingController {
     }
 
     private void processSessionMenu() {
-        Integer option;
+        Integer option = null;
         CustomerInterface customer;
 
         ScannerRenderer.renderInputChoice();
@@ -67,7 +69,13 @@ public final class BankingController {
                     this.loggedIn = true;
                     this.customerMenu();
                 } catch (Exception e) {
+                    loginAttempts++;
                     ScannerRenderer.renderSeparated(e.getMessage());
+                    if (loginAttempts > maxLoginAttempts) {
+                        ScannerRenderer.renderSeparated("Bye, bye hacker!.");
+                        System.exit(42);
+                    }
+
                     this.sessionMenu();
                 }
                 break;
