@@ -27,7 +27,7 @@ public final class CustomerManager extends AbstractManager {
                 .findAll()
                 .values()
                 .stream()
-                .filter(entity -> entity.getUsername().equals(username))
+                .filter(entity -> entity.getUsername().equalsIgnoreCase(username))
                 .findFirst()
                 .orElseThrow()
         ;

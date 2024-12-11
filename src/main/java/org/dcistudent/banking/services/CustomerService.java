@@ -54,7 +54,6 @@ public final class CustomerService {
         String password;
 
         ScannerRenderer.renderSeparated("Enter login credentials.");
-
         try {
             ScannerRenderer.renderInput("Enter your username");
             username = String.valueOf(this.scanner.next());
