@@ -52,6 +52,10 @@ public abstract class AbstractAccount implements AccountInterface {
         this.limitWithdrawalCustom = limit;
     }
 
+    public Integer getOverdraftLimit() {
+        return OVERDRAFT_LIMIT;
+    }
+
     public AccountInterface withdraw(Double amount) {
         if (amount < 10) {
             throw new BankTransferException("Withdrawal amount must be at least 10.");
@@ -63,7 +67,7 @@ public abstract class AbstractAccount implements AccountInterface {
             );
         }
 
-        amount = this.getOverdraftAmount(amount);
+        amount = this.setOverdraftAmount(amount);
         this.setBalance(this.getBalance() - amount);
 
         return this;
@@ -82,17 +86,21 @@ public abstract class AbstractAccount implements AccountInterface {
 
         this.setBalance(this.getBalance() + amount);
 
+        if (this.getBalance() > 0) {
+            this.setOverdraftCount(0);
+        }
+
         return this;
     }
 
-    private Double getOverdraftAmount(Double amount) {
+    private Double setOverdraftAmount(Double amount) {
         if (this.getOverdraftCount() >= OVERDRAFT_LIMIT) {
             throw new BankTransferException(
                     String.format("Overdraft limit of %d exceeded.", OVERDRAFT_LIMIT)
             );
         }
 
-        if (this.getBalance() < 0) {
+        if (this.getBalance() - amount < 0) {
             this.setOverdraftCount(this.getOverdraftCount() + 1);
             return amount + OVERDRAFT_FEE;
         }

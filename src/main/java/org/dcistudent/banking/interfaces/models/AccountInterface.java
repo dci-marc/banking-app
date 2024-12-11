@@ -18,6 +18,7 @@ public interface AccountInterface {
     public Double getLimitDeposit();
     public Integer getOverdraftCount();
     public void setOverdraftCount(Integer overdraftCount);
+    public Integer getOverdraftLimit();
     public AccountInterface withdraw(Double amount);
     public AccountInterface deposit(Double amount);
 }
