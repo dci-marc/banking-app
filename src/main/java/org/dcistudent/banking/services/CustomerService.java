@@ -5,6 +5,7 @@ import org.dcistudent.banking.hydrators.CustomerHydrator;
 import org.dcistudent.banking.interfaces.models.CustomerInterface;
 import org.dcistudent.banking.managers.CustomerManager;
 import org.dcistudent.banking.models.Customer;
+import org.dcistudent.banking.renderers.ScannerRenderer;
 
 import java.security.NoSuchAlgorithmException;
 import java.util.NoSuchElementException;
@@ -26,16 +27,16 @@ public final class CustomerService {
         CustomerInterface customer = new Customer();
         String username;
 
-        System.out.println("Enter your username:");
+        ScannerRenderer.renderInput("Enter your username");
         username = String.valueOf(this.scanner.next());
         try {
             this.customerManager.findByUsername(username);
             throw new UsernameValidationException("Username already exists.");
         } catch (NoSuchElementException e) {
             customer.setUsername(username);
-            System.out.println("Enter your password:");
+            ScannerRenderer.renderInput("Enter your password");
             customer.setPassword(customer.hashPassword(String.valueOf(this.scanner.next())));
-            System.out.println("Enter your first name:");
+            ScannerRenderer.renderInput("Enter your first name");
             customer.setFirstName(String.valueOf(this.scanner.next()));
             customer.setId(UUID.randomUUID().toString());
             customer.setAccount(this.accountService.create(customer));
@@ -51,13 +52,15 @@ public final class CustomerService {
         String username;
         String password;
 
+        ScannerRenderer.renderSeparated("Enter login credentials.");
+
         try {
-            System.out.println("Enter your username:");
+            ScannerRenderer.renderInput("Enter your username");
             username = String.valueOf(this.scanner.next());
             customer = CustomerHydrator.hydrate(this.customerManager.findByUsername(username));
             customer.setAccount(this.accountService.getByCustomerId(customer.getId()));
 
-            System.out.println("Enter your password:");
+            ScannerRenderer.renderInput("Enter your password");
             password = String.valueOf(this.scanner.next());
 
             if (customer.verifyPassword(password) == false) {

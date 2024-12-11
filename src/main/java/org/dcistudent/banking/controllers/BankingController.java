@@ -1,6 +1,7 @@
 package org.dcistudent.banking.controllers;
 
 import org.dcistudent.banking.interfaces.models.CustomerInterface;
+import org.dcistudent.banking.renderers.ScannerRenderer;
 import org.dcistudent.banking.services.BankingService;
 
 import java.util.Scanner;
@@ -34,85 +35,91 @@ public final class BankingController {
         try {
             this.processSessionMenu();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            ScannerRenderer.renderSeparated(e.getMessage());
             this.processSessionMenu();
         }
     }
 
     private void processSessionMenu() {
-        Integer option = this.scanner.nextInt();
+        Integer option;
         CustomerInterface customer;
+
+        ScannerRenderer.renderInputChoice();
+        option = this.scanner.nextInt();
 
         switch (option) {
             case 1:
                 try {
                     customer = this.bankingService.signup();
-                    System.out.println("Welcome, " + customer + "! Please login now.");
+                    ScannerRenderer.renderSeparated("Welcome, " + customer + "! Please login now.");
                     this.sessionMenu();
                 } catch (Exception e) {
-                    System.out.println(e.getMessage());
+                    ScannerRenderer.renderSeparated(e.getMessage());
                     this.sessionMenu();
                 }
                 break;
             case 2:
                 try {
                     customer = this.bankingService.login();
-                    System.out.println("Welcome back, " + customer + "!");
+                    ScannerRenderer.renderSeparated("Welcome back, " + customer + "!");
                     this.loggedIn = true;
                     this.customerMenu();
                 } catch (Exception e) {
-                    System.out.println(e.getMessage());
+                    ScannerRenderer.renderSeparated(e.getMessage());
                     this.sessionMenu();
                 }
                 break;
             case 3:
-                System.out.println("Bye, bye.");
+                ScannerRenderer.renderSeparated("Bye, bye.");
                 return;
             default:
-                System.out.println("Invalid option. Please ry again.");
+                ScannerRenderer.renderSeparated("Invalid option. Please try again.");
         }
 
         this.sessionMenu();
     }
 
     private void customerMenu() {
-        System.out.println("1. Deposit");
-        System.out.println("2. Withdraw");
-        System.out.println("3. Check Balance");
+        System.out.println("1. Show Balance");
+        System.out.println("2. Deposit");
+        System.out.println("3. Withdraw");
         System.out.println("4. Reset Password");
         System.out.println("5. Logout");
 
         try {
             this.processCustomerMenu();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            ScannerRenderer.renderSeparated(e.getMessage());
             this.processCustomerMenu();
         }
     }
 
     private void processCustomerMenu() {
-        Integer option = this.scanner.nextInt();
+        Integer option;
 
-//        switch (option) {
-//            case 1:
-//                this.bankingService.deposit();
-//                break;
-//            case 2:
+        ScannerRenderer.renderInputChoice();
+        option = this.scanner.nextInt();
+
+        switch (option) {
+            case 1:
+                ScannerRenderer.renderSeparated("Your balance is: " + this.bankingService.checkBalance());
+                break;
+            case 2:
+                this.bankingService.deposit();
+                break;
+//            case 3:
 //                this.withdraw();
 //                break;
-//            case 3:
-//                this.transfer();
-//                break;
 //            case 4:
-//                this.checkBalance();
+//                this.transfer();
 //                break;
 //            case 5:
 //                this.logout();
 //                break;
-//            default:
-//                System.out.println("Invalid option. :( Try again.");
-//        }
-//
-//        this.customerMenu();
+            default:
+                ScannerRenderer.renderSeparated("Invalid option. Please Try again.");
+        }
+
+        this.customerMenu();
     }
 }

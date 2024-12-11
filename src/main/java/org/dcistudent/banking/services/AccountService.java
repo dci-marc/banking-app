@@ -6,6 +6,7 @@ import org.dcistudent.banking.hydrators.AccountHydrator;
 import org.dcistudent.banking.interfaces.models.AccountInterface;
 import org.dcistudent.banking.interfaces.models.CustomerInterface;
 import org.dcistudent.banking.managers.AccountManager;
+import org.dcistudent.banking.renderers.ScannerRenderer;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -21,32 +22,34 @@ public final class AccountService {
 
     public AccountInterface create(CustomerInterface customer) {
         AccountInterface account = null;
+        Integer accountType;
 
         System.out.println("Select account type:");
         System.out.println("1. Silver");
         System.out.println("2. Gold");
         System.out.println("3. Platinum");
-        Integer accountType = scanner.nextInt();
+        ScannerRenderer.renderInputChoice();
+        accountType = scanner.nextInt();
 
         try {
             account = AccountFactory.create(accountType);
         } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+            ScannerRenderer.renderSeparated(e.getMessage());
             this.create(customer);
         }
         account.setCustomerId(customer.getId());
 
-        System.out.println("Enter your 4-digit PIN code:");
+        ScannerRenderer.renderInput("Enter your 4-digit PIN code");
         try {
             account.setPin(scanner.nextInt());
         } catch (PinValidationException e) {
-            System.out.println(e.getMessage());
+            ScannerRenderer.renderSeparated(e.getMessage());
             this.create(customer);
         } catch (InputMismatchException e) {
-            System.out.println("Invalid PIN code.");
+            ScannerRenderer.renderSeparated("Invalid PIN code.");
             this.create(customer);
         } catch (Exception e) {
-            System.out.println(e);
+            ScannerRenderer.renderSeparated(e.getMessage());
             this.create(customer);
         }
 
@@ -57,5 +60,17 @@ public final class AccountService {
 
     public AccountInterface getByCustomerId(String customerId) {
         return AccountHydrator.hydrate(this.accountManager.findByCustomerId(customerId));
+    }
+
+    public void deposit(CustomerInterface customer) {
+        AccountInterface account = customer.getAccount();
+        Double amount;
+
+        ScannerRenderer.renderSeparated("Deposition");
+        ScannerRenderer.renderInput("Enter amount to deposit");
+        amount = scanner.nextDouble();
+        account.deposit(amount);
+
+        this.accountManager.persist(new AccountHydrator(), AccountHydrator.hydrate(account));
     }
 }

@@ -1,19 +1,20 @@
 package org.dcistudent.banking.services;
 
+import org.dcistudent.banking.interfaces.models.AccountInterface;
 import org.dcistudent.banking.interfaces.models.CustomerInterface;
+import org.dcistudent.banking.renderers.ScannerRenderer;
 
 import java.security.NoSuchAlgorithmException;
 import java.util.Scanner;
 
 public final class BankingService {
-    private final Scanner scanner;
     private final CustomerService customerService;
     private final AccountService accountService;
+    private CustomerInterface customer;
 
     public BankingService(Scanner scanner) {
-        this.scanner = scanner;
-        this.customerService = new CustomerService(this.scanner);
-        this.accountService = new AccountService(this.scanner);
+        this.customerService = new CustomerService(scanner);
+        this.accountService = new AccountService(scanner);
     }
 
     public CustomerInterface signup() throws NoSuchAlgorithmException {
@@ -21,6 +22,16 @@ public final class BankingService {
     }
 
     public CustomerInterface login() {
-        return this.customerService.login();
+        this.customer = this.customerService.login();
+        return this.customer;
+    }
+
+    public Double checkBalance() {
+        return this.customer.getAccount().getBalance();
+    }
+
+    public void deposit() {
+        this.accountService.deposit(this.customer);
+        ScannerRenderer.renderSeparated("Success! Your new balance is: " + this.checkBalance());
     }
 }
