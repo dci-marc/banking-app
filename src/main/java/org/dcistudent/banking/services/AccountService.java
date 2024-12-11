@@ -73,4 +73,16 @@ public final class AccountService {
 
         this.accountManager.persist(new AccountHydrator(), AccountHydrator.hydrate(account));
     }
+
+    public void withdraw(CustomerInterface customer) {
+        AccountInterface account = customer.getAccount();
+        Double amount;
+
+        ScannerRenderer.renderSeparated("Withdrawal");
+        ScannerRenderer.renderInput("Enter amount to withdraw");
+        amount = scanner.nextDouble();
+        account.withdraw(amount);
+
+        this.accountManager.persist(new AccountHydrator(), AccountHydrator.hydrate(account));
+    }
 }

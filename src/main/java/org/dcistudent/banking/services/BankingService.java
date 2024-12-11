@@ -34,4 +34,9 @@ public final class BankingService {
         this.accountService.deposit(this.customer);
         ScannerRenderer.renderSeparated("Success! Your new balance is: " + this.checkBalance());
     }
+
+    public void withdraw() {
+        this.accountService.withdraw(this.customer);
+        ScannerRenderer.renderSeparated("Success! Your new balance is: " + this.checkBalance());
+    }
 }

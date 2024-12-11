@@ -107,9 +107,9 @@ public final class BankingController {
             case 2:
                 this.bankingService.deposit();
                 break;
-//            case 3:
-//                this.withdraw();
-//                break;
+            case 3:
+                this.bankingService.withdraw();
+                break;
 //            case 4:
 //                this.transfer();
 //                break;
