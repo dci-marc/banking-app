@@ -1,6 +1,8 @@
 package org.dcistudent.banking.services;
 
-import org.dcistudent.banking.exceptions.validations.PinValidationException;
+import org.dcistudent.banking.exceptions.transfers.BankTransferException;
+import org.dcistudent.banking.exceptions.validations.accounts.LimitValidationException;
+import org.dcistudent.banking.exceptions.validations.accounts.PinValidationException;
 import org.dcistudent.banking.factories.AccountFactory;
 import org.dcistudent.banking.hydrators.AccountHydrator;
 import org.dcistudent.banking.interfaces.models.AccountInterface;
@@ -39,25 +41,76 @@ public final class AccountService {
             this.create(customer);
         }
         account.setCustomerId(customer.getId());
+        customer.setAccount(account);
+
+        this
+                .createAccountSecurity(customer)
+                .createAccountInitialDeposit(customer)
+                .createAccountWithdrawLimit(customer)
+        ;
+
+        this.accountManager.persist(new AccountHydrator(), AccountHydrator.hydrate(account));
+
+        return account;
+    }
+
+    private AccountService createAccountSecurity(CustomerInterface customer) {
+        AccountInterface account = customer.getAccount();
 
         ScannerRenderer.renderSeparated("Bank Account Security");
         ScannerRenderer.renderInput("Enter your 4-digit PIN code");
         try {
             account.setPin(scanner.nextInt());
+            customer.setAccount(account);
         } catch (PinValidationException e) {
             ScannerRenderer.renderSeparated(e.getMessage());
-            this.create(customer);
+            this.createAccountSecurity(customer);
         } catch (InputMismatchException e) {
             ScannerRenderer.renderSeparated("Invalid PIN code.");
-            this.create(customer);
-        } catch (Exception e) {
-            ScannerRenderer.renderSeparated(e.getMessage());
-            this.create(customer);
+            this.createAccountSecurity(customer);
         }
 
-        this.accountManager.persist(new AccountHydrator(), AccountHydrator.hydrate(account));
+        return this;
+    }
 
-        return account;
+    private AccountService createAccountInitialDeposit(CustomerInterface customer) {
+        AccountInterface account = customer.getAccount();
+        Double amount;
+
+        ScannerRenderer.renderSeparated(
+                String.format("Initial Deposit (Limit: %f)", account.getLimitDeposit())
+        );
+        ScannerRenderer.renderInput("Enter amount to deposit");
+        amount = scanner.nextDouble();
+
+        try {
+            account.deposit(amount);
+            customer.setAccount(account);
+        } catch (BankTransferException e) {
+            ScannerRenderer.renderSeparated(e.getMessage());
+            this.createAccountInitialDeposit(customer);
+        }
+
+        return this;
+    }
+
+    private void createAccountWithdrawLimit(CustomerInterface customer) {
+        AccountInterface account = customer.getAccount();
+        Double amount;
+
+        ScannerRenderer.renderSeparated(
+                String.format("Withdraw Limit (Limit: %f)", account.getLimitWithdrawal())
+        );
+        ScannerRenderer.renderInput("Enter amount to set as custom withdrawal limit");
+        amount = scanner.nextDouble();
+
+        try {
+            account.setLimitWithdrawalCustom(amount);
+            customer.setAccount(account);
+        } catch (LimitValidationException e) {
+            ScannerRenderer.renderSeparated(e.getMessage());
+            this.createAccountWithdrawLimit(customer);
+        }
     }
 
     public AccountInterface getByCustomerId(String customerId) {

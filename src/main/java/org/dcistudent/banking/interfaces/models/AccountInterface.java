@@ -11,6 +11,11 @@ public interface AccountInterface {
     public void setAccountType(Integer accountType);
     public Double getBalance();
     public void setBalance(Double balance);
+    public Double getLimitWithdrawal();
+    public void setLimitWithdrawal(Double limitWithdrawal);
+    public Double getLimitWithdrawalCustom();
+    public void setLimitWithdrawalCustom(Double limitWithdrawalCustom);
+    public Double getLimitDeposit();
     public Integer getOverdraftCount();
     public void setOverdraftCount(Integer overdraftCount);
     public AccountInterface withdraw(Double amount);
