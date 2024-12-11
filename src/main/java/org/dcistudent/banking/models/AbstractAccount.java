@@ -58,6 +58,8 @@ public abstract class AbstractAccount implements AccountInterface {
             );
         }
 
+        this.setBalance(this.getBalance() + amount);
+
         return this;
     }
 
