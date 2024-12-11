@@ -1,9 +1,8 @@
 package org.dcistudent.banking.controllers;
 
-import org.dcistudent.banking.models.Customer;
+import org.dcistudent.banking.interfaces.models.CustomerInterface;
 import org.dcistudent.banking.services.BankingService;
 
-import java.security.NoSuchAlgorithmException;
 import java.util.Scanner;
 
 public final class BankingController {
@@ -42,17 +41,14 @@ public final class BankingController {
 
     private void processSessionMenu() {
         Integer option = this.scanner.nextInt();
-        Customer customer;
+        CustomerInterface customer;
 
         switch (option) {
             case 1:
                 try {
                     customer = this.bankingService.signup();
                     System.out.println("Welcome, " + customer + "! Please login now.");
-                    return;
-                } catch (NoSuchAlgorithmException e) {
-                    System.out.println(e.getMessage());
-                    return;
+                    this.sessionMenu();
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
                     this.sessionMenu();
@@ -99,7 +95,7 @@ public final class BankingController {
 
 //        switch (option) {
 //            case 1:
-//                this.deposit();
+//                this.bankingService.deposit();
 //                break;
 //            case 2:
 //                this.withdraw();
@@ -116,7 +112,7 @@ public final class BankingController {
 //            default:
 //                System.out.println("Invalid option. :( Try again.");
 //        }
-
-        this.customerMenu();
+//
+//        this.customerMenu();
     }
 }
