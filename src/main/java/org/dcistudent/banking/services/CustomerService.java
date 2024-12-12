@@ -13,12 +13,10 @@ import java.util.NoSuchElementException;
 import java.util.UUID;
 
 public final class CustomerService {
-    private final ScannerFacade scanner;
     private final AccountService accountService;
     private final CustomerManager customerManager;
 
     public CustomerService() {
-        this.scanner = ScannerFacade.getInstance();
         this.accountService = new AccountService();
         this.customerManager = new CustomerManager();
     }
@@ -29,16 +27,16 @@ public final class CustomerService {
 
         ScannerRenderer.renderSeparated("Customer Account Creation");
         ScannerRenderer.renderInput("Enter your username");
-        username = this.scanner.getNonEmpty();
+        username = ScannerFacade.getNonEmpty();
         try {
             this.customerManager.findByUsername(username);
             throw new UsernameValidationException("Username already taken.");
         } catch (NoSuchElementException e) {
             customer.setUsername(username);
             ScannerRenderer.renderInput("Enter your password");
-            customer.setPassword(customer.hashPassword(this.scanner.getNonEmpty()));
+            customer.setPassword(customer.hashPassword(ScannerFacade.getNonEmpty()));
             ScannerRenderer.renderInput("Enter your first name");
-            customer.setFirstName(this.scanner.getNonEmpty());
+            customer.setFirstName(ScannerFacade.getNonEmpty());
             customer.setId(UUID.randomUUID().toString());
             customer.setAccount(this.accountService.create(customer));
 
@@ -56,12 +54,12 @@ public final class CustomerService {
         ScannerRenderer.renderSeparated("Enter login credentials.");
         try {
             ScannerRenderer.renderInput("Enter your username");
-            username = this.scanner.getNonEmpty();
+            username = ScannerFacade.getNonEmpty();
             customer = CustomerHydrator.hydrate(this.customerManager.findByUsername(username));
             customer.setAccount(this.accountService.getByCustomerId(customer.getId()));
 
             ScannerRenderer.renderInput("Enter your password");
-            password = this.scanner.getNonEmpty();
+            password = ScannerFacade.getNonEmpty();
 
             if (customer.verifyPassword(password) == false) {
                 throw new UsernameValidationException("Invalid login.");
@@ -77,7 +75,7 @@ public final class CustomerService {
         String password;
         ScannerRenderer.renderSeparated("Password Reset");
         ScannerRenderer.renderInput("Enter your new password");
-        password = this.scanner.getNonEmpty();
+        password = ScannerFacade.getNonEmpty();
         if (customer.verifyPassword(password) == true) {
             throw new UsernameValidationException("New password must be different from the old one.");
         }

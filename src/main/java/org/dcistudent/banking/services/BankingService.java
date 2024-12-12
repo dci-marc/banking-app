@@ -1,7 +1,6 @@
 package org.dcistudent.banking.services;
 
 import org.dcistudent.banking.exceptions.validations.customers.PasswordValidationException;
-import org.dcistudent.banking.facades.ScannerFacade;
 import org.dcistudent.banking.interfaces.models.CustomerInterface;
 import org.dcistudent.banking.models.Customer;
 

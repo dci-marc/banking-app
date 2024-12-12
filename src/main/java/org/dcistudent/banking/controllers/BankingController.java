@@ -9,7 +9,6 @@ import org.dcistudent.banking.services.BankingService;
 import java.security.NoSuchAlgorithmException;
 
 public final class BankingController {
-    private final ScannerFacade scanner;
     private final BankingService bankingService;
     private Boolean loggedIn = false;
     private static Integer loginAttempts = 1;
@@ -20,7 +19,6 @@ public final class BankingController {
     }
 
     public BankingController() {
-        this.scanner = ScannerFacade.getInstance();
         this.bankingService = new BankingService();
 
         if (this.loggedIn == false) {
@@ -50,7 +48,7 @@ public final class BankingController {
 
         ScannerRenderer.renderInputChoice();
         try {
-            option = this.scanner.getInt();
+            option = ScannerFacade.getInt();
         } catch (IllegalArgumentException e) {
             ScannerRenderer.renderSeparated(e.getMessage());
             this.sessionMenu();
@@ -116,7 +114,7 @@ public final class BankingController {
 
         ScannerRenderer.renderInputChoice();
         try {
-            option = this.scanner.getInt();
+            option = ScannerFacade.getInt();
         } catch (IllegalArgumentException e) {
             ScannerRenderer.renderSeparated(e.getMessage());
             this.customerMenu();

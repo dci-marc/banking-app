@@ -1,43 +1,34 @@
 package org.dcistudent.banking.facades;
 
-import org.dcistudent.banking.renderers.ScannerRenderer;
-
 import java.util.Scanner;
 
 public final class ScannerFacade {
-    private static final ScannerFacade INSTANCE;
-    private final Scanner scanner;
+    private static final Scanner SCANNER;
 
     static {
-        INSTANCE = new ScannerFacade();
+        SCANNER = new Scanner(System.in);
     }
 
-    private ScannerFacade() {
-        this.scanner = new Scanner(System.in).useDelimiter("\n");
-    }
+    private ScannerFacade() {}
 
-    public static ScannerFacade getInstance() {
-        return INSTANCE;
-    }
-
-    public Integer getInt() {
+    public static Integer getInt() {
         try {
-            return Integer.parseInt(this.scanner.nextLine().trim());
+            return Integer.parseInt(SCANNER.nextLine().trim());
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("Invalid input. Please enter a number.");
         }
     }
 
-    public Double getDouble() {
+    public static Double getDouble() {
         try {
-            return Double.parseDouble(this.scanner.nextLine().trim());
+            return Double.parseDouble(SCANNER.nextLine().trim());
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("Invalid input. Please enter a number.");
         }
     }
 
-    public String getNonEmpty() {
-        String input = this.scanner.nextLine().trim();
+    public static String getNonEmpty() {
+        String input = SCANNER.nextLine().trim();
         if (input.isEmpty() == false) {
             return input;
         }

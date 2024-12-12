@@ -16,7 +16,6 @@ import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
 
 public final class AccountService {
-    private final ScannerFacade scanner;
     private final AccountManager accountManager;
     private static final String GIRO_ACCOUNT;
 
@@ -25,7 +24,6 @@ public final class AccountService {
     }
 
     public AccountService() {
-        this.scanner = ScannerFacade.getInstance();
         this.accountManager = new AccountManager();
     }
 
@@ -40,7 +38,7 @@ public final class AccountService {
         }
         ScannerRenderer.renderInputChoice();
         try {
-            accountType = scanner.getInt();
+            accountType = ScannerFacade.getInt();
         } catch (InputMismatchException e) {
             ScannerRenderer.renderSeparated("Invalid account type.");
             this.create(customer);
@@ -72,7 +70,7 @@ public final class AccountService {
         ScannerRenderer.renderSeparated("Bank Account Security");
         ScannerRenderer.renderInput("Enter your 4-digit PIN code");
         try {
-            account.setPin(scanner.getInt());
+            account.setPin(ScannerFacade.getInt());
             customer.setAccount(account);
         } catch (PinValidationException | IllegalArgumentException e) {
             ScannerRenderer.renderSeparated(e.getMessage());
@@ -94,7 +92,7 @@ public final class AccountService {
         );
         ScannerRenderer.renderInput("Enter amount to deposit");
         try {
-            amount = scanner.getDouble();
+            amount = ScannerFacade.getDouble();
         } catch (IllegalArgumentException e) {
             ScannerRenderer.renderSeparated(e.getMessage());
             this.createAccountInitialDeposit(customer);
@@ -120,7 +118,7 @@ public final class AccountService {
         );
         ScannerRenderer.renderInput("Enter amount to set as custom withdrawal limit");
         try {
-            amount = scanner.getDouble();
+            amount = ScannerFacade.getDouble();
         } catch (IllegalArgumentException e) {
             ScannerRenderer.renderSeparated(e.getMessage());
             this.createAccountWithdrawLimit(customer);
@@ -152,7 +150,7 @@ public final class AccountService {
         );
         ScannerRenderer.renderInput("Enter amount to deposit");
         try {
-            amount = scanner.getDouble();
+            amount = ScannerFacade.getDouble();
         } catch (IllegalArgumentException e) {
             ScannerRenderer.renderSeparated(e.getMessage());
             this.deposit(customer);
@@ -187,7 +185,7 @@ public final class AccountService {
 
         ScannerRenderer.renderInput("Enter amount to withdraw");
         try {
-            amount = scanner.getDouble();
+            amount = ScannerFacade.getDouble();
         } catch (IllegalArgumentException e) {
             ScannerRenderer.renderSeparated(e.getMessage());
             this.withdraw(customer);
@@ -217,7 +215,7 @@ public final class AccountService {
         ScannerRenderer.renderSeparated("Transfer");
         ScannerRenderer.renderInput("Enter recipient's account number");
         try {
-            recipient = this.getById(scanner.getNonEmpty());
+            recipient = this.getById(ScannerFacade.getNonEmpty());
         } catch (NoSuchElementException e) {
             ScannerRenderer.renderSeparated("Recipient account not found.");
             this.transfer(customer);
@@ -226,7 +224,7 @@ public final class AccountService {
 
         ScannerRenderer.renderInput("Enter amount to transfer");
         try {
-            amount = scanner.getDouble();
+            amount = ScannerFacade.getDouble();
         } catch (IllegalArgumentException e) {
             ScannerRenderer.renderSeparated(e.getMessage());
             this.transfer(customer);
@@ -252,7 +250,7 @@ public final class AccountService {
         ScannerRenderer.renderSeparated("Transfer Security");
         ScannerRenderer.renderInput("Enter recipient's 4-digit PIN code");
         try {
-            pin = scanner.getInt();
+            pin = ScannerFacade.getInt();
         } catch (IllegalArgumentException e) {
             ScannerRenderer.renderSeparated(e.getMessage());
             this.transferPinValidation(account);
