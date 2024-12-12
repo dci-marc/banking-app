@@ -167,7 +167,7 @@ public final class AccountService {
         this.accountManager.persist(new AccountHydrator(), AccountHydrator.hydrate(account));
     }
 
-    public void withdraw(CustomerInterface customer) {
+    public void withdraw(CustomerInterface customer) throws InterruptedException {
         AccountInterface account = customer.getAccount();
         Double amount;
 
@@ -195,7 +195,13 @@ public final class AccountService {
         this.transferPinValidation(account);
 
         if (account.getAccountName().equals(GIRO_ACCOUNT)) {
-            System.out.println("Instant card balance validation...");
+            System.out.printf("%nInstant card balance validation");
+
+            Thread.sleep(1000);
+            for (int i = 0; i < 3; i++) {
+                System.out.print(".");
+                Thread.sleep(1000);
+            }
         }
 
         try {
@@ -243,6 +249,8 @@ public final class AccountService {
 
         this.accountManager.persist(new AccountHydrator(), AccountHydrator.hydrate(account));
         this.accountManager.persist(new AccountHydrator(), AccountHydrator.hydrate(recipient));
+
+        System.out.printf("%nTransferring %.2f to account '%s'.", amount, recipient.getId());
     }
 
     private void transferPinValidation(AccountInterface account) {

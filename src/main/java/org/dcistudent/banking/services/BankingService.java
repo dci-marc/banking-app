@@ -33,7 +33,7 @@ public final class BankingService {
         this.accountService.deposit(this.customer);
     }
 
-    public void withdraw() {
+    public void withdraw() throws InterruptedException {
         this.accountService.withdraw(this.customer);
     }
 
