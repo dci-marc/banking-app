@@ -1,13 +1,17 @@
 package org.dcistudent.banking.managers.criterias;
 
+import lombok.Getter;
+import lombok.NonNull;
 import org.dcistudent.banking.exceptions.managers.criterias.IdMissingException;
 import org.dcistudent.banking.exceptions.managers.criterias.IdValidationException;
 
 import java.util.UUID;
 
+@Getter
 public final class FindByUuid extends BaseCriteria {
     private String id = "";
 
+    @NonNull
     public FindByUuid(String id) {
         super();
         this.id = id;
@@ -36,7 +40,4 @@ public final class FindByUuid extends BaseCriteria {
         }
     }
 
-    public String getId() {
-        return this.id;
-    }
 }

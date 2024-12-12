@@ -8,17 +8,28 @@ import org.dcistudent.banking.interfaces.models.AccountInterface;
 
 @Getter @Setter
 public abstract class AbstractAccount implements AccountInterface {
+    @NonNull
     private String id;
+    @NonNull
     private String customerId;
-    private Integer pin;
+    @NonNull
+    private Integer pin = 0;
+    @NonNull
     private Double balance = 0.0;
+    @NonNull
     private Double limitWithdrawal;
+    @NonNull
     private Double limitWithdrawalCustom;
+    @NonNull
     private Double limitDeposit;
+    @NonNull
     private Integer overdraftCount = 0;
+    @NonNull
     private static final Integer OVERDRAFT_LIMIT = 2;
+    @NonNull
     private static final Double OVERDRAFT_FEE = 50.00;
 
+    @NonNull
     protected AbstractAccount(String id, Double limitWithdrawal, Double limitDeposit) {
         this.setId(id);
         this.setLimitWithdrawal(limitWithdrawal);
@@ -26,6 +37,7 @@ public abstract class AbstractAccount implements AccountInterface {
         this.limitWithdrawalCustom = this.getLimitWithdrawal();
     }
 
+    @NonNull
     public void setPin(Integer pin) {
         if (pin < 999 || pin > 9999) {
             throw new PinValidationException("PIN must be a 4-digit number.");
@@ -33,6 +45,7 @@ public abstract class AbstractAccount implements AccountInterface {
         this.pin = pin;
     }
 
+    @NonNull
     public void setLimitWithdrawalCustom(Double limit) {
         if(limit > this.getLimitWithdrawal()) {
             throw new LimitValidationException(
@@ -60,6 +73,7 @@ public abstract class AbstractAccount implements AccountInterface {
         return OVERDRAFT_LIMIT;
     }
 
+    @NonNull
     public AccountInterface withdraw(Double amount) throws LimitValidationException {
         if (amount < 10) {
             throw new BankTransferException("Withdrawal amount must be at least 10.");
@@ -77,6 +91,7 @@ public abstract class AbstractAccount implements AccountInterface {
         return this;
     }
 
+    @NonNull
     public AccountInterface deposit(Double amount) {
         if (amount < 10) {
             throw new BankTransferException("Deposit amount must be at least  10.");
@@ -97,6 +112,7 @@ public abstract class AbstractAccount implements AccountInterface {
         return this;
     }
 
+    @NonNull
     private Double setOverdraftAmount(Double amount) {
         if (this.getOverdraftCount() >= OVERDRAFT_LIMIT) {
             throw new BankTransferException(

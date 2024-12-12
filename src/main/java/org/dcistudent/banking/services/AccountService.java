@@ -1,5 +1,6 @@
 package org.dcistudent.banking.services;
 
+import lombok.NonNull;
 import org.dcistudent.banking.exceptions.transfers.BankTransferException;
 import org.dcistudent.banking.exceptions.validations.accounts.LimitValidationException;
 import org.dcistudent.banking.exceptions.validations.accounts.PinValidationException;
@@ -16,7 +17,9 @@ import org.dcistudent.banking.renderers.ScannerRenderer;
 import java.util.InputMismatchException;
 
 public final class AccountService {
+    @NonNull
     private final AccountManager accountManager;
+    @NonNull
     private static final String GIRO_ACCOUNT;
 
     static {
@@ -27,6 +30,7 @@ public final class AccountService {
         this.accountManager = new AccountManager();
     }
 
+    @NonNull
     public AccountInterface create(CustomerInterface customer) {
         AccountInterface account = null;
         Integer accountType = 0;
@@ -64,6 +68,7 @@ public final class AccountService {
         return account;
     }
 
+    @NonNull
     private AccountService createAccountSecurity(CustomerInterface customer) {
         AccountInterface account = customer.getAccount();
 
@@ -83,6 +88,7 @@ public final class AccountService {
         return this;
     }
 
+    @NonNull
     private AccountService createAccountInitialDeposit(CustomerInterface customer) {
         AccountInterface account = customer.getAccount();
         Double amount = 0.0;
@@ -109,6 +115,7 @@ public final class AccountService {
         return this;
     }
 
+    @NonNull
     private void createAccountWithdrawLimit(CustomerInterface customer) {
         AccountInterface account = customer.getAccount();
         Double amount = 0.0;
@@ -133,14 +140,17 @@ public final class AccountService {
         }
     }
 
+    @NonNull
     public AccountInterface getById(String id) throws Exception {
         return AccountHydrator.hydrate(this.accountManager.findById(new FindByUuid(id)));
     }
 
+    @NonNull
     public AccountInterface getByCustomerId(String customerId) {
         return AccountHydrator.hydrate(this.accountManager.findByCustomerId(new FindByUuid(customerId)));
     }
 
+    @NonNull
     public void deposit(CustomerInterface customer) {
         AccountInterface account = customer.getAccount();
         Double amount = 0.0;
@@ -166,6 +176,7 @@ public final class AccountService {
         this.accountManager.persist(new AccountHydrator(), AccountHydrator.hydrate(account));
     }
 
+    @NonNull
     public void withdraw(CustomerInterface customer) throws InterruptedException {
         AccountInterface account = customer.getAccount();
         Double amount;
@@ -213,6 +224,7 @@ public final class AccountService {
         this.accountManager.persist(new AccountHydrator(), AccountHydrator.hydrate(account));
     }
 
+    @NonNull
     public void transfer(CustomerInterface customer) {
         AccountInterface account = customer.getAccount();
         AccountInterface recipient;
@@ -252,6 +264,7 @@ public final class AccountService {
         System.out.printf("%nTransferring %.2f to account '%s'.", amount, recipient.getId());
     }
 
+    @NonNull
     private void transferPinValidation(AccountInterface account) {
         Integer pin = 0;
 

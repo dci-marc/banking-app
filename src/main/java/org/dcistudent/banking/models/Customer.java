@@ -24,6 +24,7 @@ public final class Customer implements CustomerInterface {
     private AccountInterface account;
     private static final Integer PASSWORD_MIN_LENGTH = 6;
 
+    @NonNull
     public void setUsername(String username) {
         if (username.isBlank()) {
             throw new UsernameValidationException("Username cannot be empty.");
@@ -36,6 +37,7 @@ public final class Customer implements CustomerInterface {
         this.username = username;
     }
 
+    @NonNull
     public void setPassword(String password) throws NoSuchAlgorithmException {
         if (password.isBlank()) {
             throw new PasswordValidationException("Password cannot be empty.");
@@ -50,10 +52,12 @@ public final class Customer implements CustomerInterface {
         this.password = password;
     }
 
+    @NonNull
     public String hashPassword(String password) {
         return new BCryptPasswordEncoder().encode(password);
     }
 
+    @NonNull
     public Boolean verifyPassword(String password) {
         return new BCryptPasswordEncoder().matches(password, this.getPassword());
     }

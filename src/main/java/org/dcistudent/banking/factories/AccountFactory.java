@@ -1,5 +1,6 @@
 package org.dcistudent.banking.factories;
 
+import lombok.NonNull;
 import org.dcistudent.banking.interfaces.models.AccountInterface;
 import org.dcistudent.banking.models.*;
 
@@ -8,6 +9,7 @@ import java.util.Map;
 import java.util.UUID;
 
 public final class AccountFactory {
+    @NonNull
     public static final Map<Integer, String> ACCOUNT_TYPES;
 
     static {
@@ -22,6 +24,7 @@ public final class AccountFactory {
 
     private AccountFactory() {}
 
+    @NonNull
     public static AccountInterface create(Integer type) {
         String accountId;
 

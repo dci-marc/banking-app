@@ -1,5 +1,6 @@
 package org.dcistudent.banking.services;
 
+import lombok.NonNull;
 import org.dcistudent.banking.exceptions.validations.customers.UsernameValidationException;
 import org.dcistudent.banking.facades.ScannerFacade;
 import org.dcistudent.banking.hydrators.CustomerHydrator;
@@ -13,7 +14,9 @@ import java.util.NoSuchElementException;
 import java.util.UUID;
 
 public final class CustomerService {
+    @NonNull
     private final AccountService accountService;
+    @NonNull
     private final CustomerManager customerManager;
 
     public CustomerService() {
@@ -71,6 +74,7 @@ public final class CustomerService {
         return customer;
     }
 
+    @NonNull
     public void resetPassword(CustomerInterface customer) throws NoSuchAlgorithmException {
         String password;
         ScannerRenderer.renderSeparated("Password Reset");

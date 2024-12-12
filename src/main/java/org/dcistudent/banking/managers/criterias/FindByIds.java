@@ -1,6 +1,7 @@
 package org.dcistudent.banking.managers.criterias;
 
 import lombok.Getter;
+import lombok.NonNull;
 import org.dcistudent.banking.exceptions.managers.criterias.IdMissingException;
 
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.List;
 class FindByIds extends BaseCriteria {
     private final List<Integer> ids;
 
+    @NonNull
     public FindByIds(List<Integer> ids)
     {
         super();

@@ -12,12 +12,14 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 
 public abstract class AbstractManager implements AbstractManagerInterface {
+    @NonNull
     private final String filePath;
 
-    protected AbstractManager(@NonNull String filePath) {
+    protected AbstractManager(String filePath) {
         this.filePath = filePath;
     }
 
+    @NonNull
     public Map<String, EntityInterface> findAll(HydratorInterface entityHydrator) {
         Map<String, EntityInterface> map = new HashMap<>();
 
@@ -32,6 +34,7 @@ public abstract class AbstractManager implements AbstractManagerInterface {
         return map;
     }
 
+    @NonNull
     public EntityInterface findById(HydratorInterface entityHydrator, FindByUuid criteria) throws Exception {
         if (criteria.isInvalid() == true) {
             throw criteria.getException();
@@ -47,6 +50,7 @@ public abstract class AbstractManager implements AbstractManagerInterface {
                 ;
     }
 
+    @NonNull
     public void persist(HydratorInterface entityHydrator, Map<String, EntityInterface> map) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(this.filePath))) {
             writer.write(entityHydrator.hydrate(map));
@@ -55,6 +59,7 @@ public abstract class AbstractManager implements AbstractManagerInterface {
         }
     }
 
+    @NonNull
     public void persist(HydratorInterface entityHydrator, EntityInterface entity) {
         Map<String, EntityInterface> map = this.findAll(entityHydrator);
 
@@ -86,6 +91,7 @@ public abstract class AbstractManager implements AbstractManagerInterface {
         }
     }
 
+    @NonNull
     protected BufferedReader getReader() {
         try {
             return new BufferedReader(new FileReader(this.filePath));

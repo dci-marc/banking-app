@@ -1,11 +1,13 @@
 package org.dcistudent.banking.hydrators;
 
+import lombok.NonNull;
 import org.dcistudent.banking.entities.Customer;
 import org.dcistudent.banking.interfaces.models.CustomerInterface;
 
 import java.security.NoSuchAlgorithmException;
 
 public final class CustomerHydrator extends AbstractHydrator {
+    @NonNull
     public Customer hydrate(String[] fields) {
         Customer customer = new Customer();
         customer.setId(String.valueOf(fields[0]));
@@ -16,6 +18,7 @@ public final class CustomerHydrator extends AbstractHydrator {
         return customer;
     }
 
+    @NonNull
     public static CustomerInterface hydrate(Customer customerEntity) {
         CustomerInterface customer = new org.dcistudent.banking.models.Customer();
         customer.setId(customerEntity.getId());
@@ -30,6 +33,7 @@ public final class CustomerHydrator extends AbstractHydrator {
         return customer;
     }
 
+    @NonNull
     public static Customer hydrate(CustomerInterface customer) {
         Customer entity = new Customer();
         entity.setId(customer.getId());

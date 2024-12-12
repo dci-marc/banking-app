@@ -1,5 +1,6 @@
 package org.dcistudent.banking.managers.criterias;
 
+import lombok.NonNull;
 import org.dcistudent.banking.exceptions.managers.criterias.CriteriaExceptionNotSet;
 import org.dcistudent.banking.interfaces.managers.criterias.BaseCriteriaInterface;
 
@@ -21,6 +22,7 @@ public abstract class BaseCriteria implements BaseCriteriaInterface {
         return this.invalid;
     }
 
+    @NonNull
     protected final void setException(Exception exception) {
         this.exception = exception;
     }

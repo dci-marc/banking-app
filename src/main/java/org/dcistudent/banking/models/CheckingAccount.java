@@ -19,6 +19,7 @@ public class CheckingAccount extends AbstractAccount {
     public static final Double LIMIT_WITHDRAWAL = 1000.00;
     public static final Double LIMIT_DEPOSIT = 3000.00;
 
+    @NonNull
     public CheckingAccount(String accountId) {
         super(accountId, LIMIT_WITHDRAWAL, LIMIT_DEPOSIT);
     }

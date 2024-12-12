@@ -1,5 +1,6 @@
 package org.dcistudent.banking.managers;
 
+import lombok.NonNull;
 import org.dcistudent.banking.entities.Customer;
 import org.dcistudent.banking.hydrators.CustomerHydrator;
 import org.dcistudent.banking.interfaces.entities.EntityInterface;
@@ -14,6 +15,7 @@ public final class CustomerManager extends AbstractManager {
         super(FILE_PATH);
     }
 
+    @NonNull
     public Map<String, Customer> findAll() {
         Map<String, EntityInterface> map = super.findAll(new CustomerHydrator());
         Map<String, Customer> customers = new HashMap<>();
@@ -22,6 +24,7 @@ public final class CustomerManager extends AbstractManager {
         return customers;
     }
 
+    @NonNull
     public Customer findByUsername(String username) {
         return this
                 .findAll()

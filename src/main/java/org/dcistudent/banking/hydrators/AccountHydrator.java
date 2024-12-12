@@ -1,10 +1,12 @@
 package org.dcistudent.banking.hydrators;
 
+import lombok.NonNull;
 import org.dcistudent.banking.entities.Account;
 import org.dcistudent.banking.factories.AccountFactory;
 import org.dcistudent.banking.interfaces.models.AccountInterface;
 
 public final class AccountHydrator extends AbstractHydrator {
+    @NonNull
     public Account hydrate(String[] fields) {
         Account account = new Account();
         account.setId(String.valueOf(fields[0]));
@@ -17,6 +19,7 @@ public final class AccountHydrator extends AbstractHydrator {
         return account;
     }
 
+    @NonNull
     public static AccountInterface hydrate(Account accountEntity) {
         AccountInterface account = AccountFactory.create(accountEntity.getAccountType());
         account.setId(accountEntity.getId());
@@ -29,6 +32,7 @@ public final class AccountHydrator extends AbstractHydrator {
         return account;
     }
 
+    @NonNull
     public static Account hydrate(AccountInterface account) {
         Account entity = new Account();
         entity.setId(account.getId());

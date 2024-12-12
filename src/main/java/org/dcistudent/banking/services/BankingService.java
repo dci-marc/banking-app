@@ -1,5 +1,6 @@
 package org.dcistudent.banking.services;
 
+import lombok.NonNull;
 import org.dcistudent.banking.exceptions.validations.customers.PasswordValidationException;
 import org.dcistudent.banking.interfaces.models.CustomerInterface;
 import org.dcistudent.banking.models.Customer;
@@ -7,9 +8,12 @@ import org.dcistudent.banking.models.Customer;
 import java.security.NoSuchAlgorithmException;
 
 public final class BankingService {
+    @NonNull
     private final CustomerService customerService;
+    @NonNull
     private final AccountService accountService;
-    private CustomerInterface customer;
+    @NonNull
+    private CustomerInterface customer = new Customer();
 
     public BankingService() {
         this.customerService = new CustomerService();

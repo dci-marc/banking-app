@@ -1,12 +1,14 @@
 package org.dcistudent.banking.managers.criterias;
 
 import lombok.Getter;
+import lombok.NonNull;
 import org.dcistudent.banking.exceptions.managers.criterias.IdMissingException;
 
 @Getter
 public class FindById extends BaseCriteria{
     private Integer id = 0;
 
+    @NonNull
     public FindById(Integer id) {
         super();
         this.id = id;
