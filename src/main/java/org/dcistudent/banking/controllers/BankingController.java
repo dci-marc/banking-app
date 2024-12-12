@@ -81,7 +81,7 @@ public final class BankingController {
                 break;
             case 3:
                 ScannerRenderer.renderSeparated("Bye, bye.");
-                return;
+                System.exit(0);
             default:
                 ScannerRenderer.renderSeparated("Invalid option. Please try again.");
         }
