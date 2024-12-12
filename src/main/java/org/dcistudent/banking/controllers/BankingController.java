@@ -1,15 +1,15 @@
 package org.dcistudent.banking.controllers;
 
 import org.dcistudent.banking.exceptions.validations.customers.PasswordValidationException;
+import org.dcistudent.banking.facades.ScannerFacade;
 import org.dcistudent.banking.interfaces.models.CustomerInterface;
 import org.dcistudent.banking.renderers.ScannerRenderer;
 import org.dcistudent.banking.services.BankingService;
 
 import java.security.NoSuchAlgorithmException;
-import java.util.Scanner;
 
 public final class BankingController {
-    private final Scanner scanner;
+    private final ScannerFacade scanner;
     private final BankingService bankingService;
     private Boolean loggedIn = false;
     private static Integer loginAttempts = 1;
@@ -20,8 +20,8 @@ public final class BankingController {
     }
 
     public BankingController() {
-        this.scanner = new Scanner(System.in).useDelimiter("\n");
-        this.bankingService = new BankingService(this.scanner);
+        this.scanner = ScannerFacade.getInstance();
+        this.bankingService = new BankingService();
 
         if (this.loggedIn == false) {
             this.sessionMenu();
@@ -49,7 +49,13 @@ public final class BankingController {
         CustomerInterface customer;
 
         ScannerRenderer.renderInputChoice();
-        option = this.scanner.nextInt();
+        try {
+            option = this.scanner.getInt();
+        } catch (IllegalArgumentException e) {
+            ScannerRenderer.renderSeparated(e.getMessage());
+            this.sessionMenu();
+            return;
+        }
 
         switch (option) {
             case 1:
@@ -109,7 +115,13 @@ public final class BankingController {
         Integer option;
 
         ScannerRenderer.renderInputChoice();
-        option = this.scanner.nextInt();
+        try {
+            option = this.scanner.getInt();
+        } catch (IllegalArgumentException e) {
+            ScannerRenderer.renderSeparated(e.getMessage());
+            this.customerMenu();
+            return;
+        }
 
         switch (option) {
             case 1:

@@ -1,20 +1,20 @@
 package org.dcistudent.banking.services;
 
 import org.dcistudent.banking.exceptions.validations.customers.PasswordValidationException;
+import org.dcistudent.banking.facades.ScannerFacade;
 import org.dcistudent.banking.interfaces.models.CustomerInterface;
 import org.dcistudent.banking.models.Customer;
 
 import java.security.NoSuchAlgorithmException;
-import java.util.Scanner;
 
 public final class BankingService {
     private final CustomerService customerService;
     private final AccountService accountService;
     private CustomerInterface customer;
 
-    public BankingService(Scanner scanner) {
-        this.customerService = new CustomerService(scanner);
-        this.accountService = new AccountService(scanner);
+    public BankingService() {
+        this.customerService = new CustomerService();
+        this.accountService = new AccountService();
     }
 
     public CustomerInterface signup() throws NoSuchAlgorithmException {

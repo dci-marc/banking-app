@@ -3,6 +3,7 @@ package org.dcistudent.banking.services;
 import org.dcistudent.banking.exceptions.transfers.BankTransferException;
 import org.dcistudent.banking.exceptions.validations.accounts.LimitValidationException;
 import org.dcistudent.banking.exceptions.validations.accounts.PinValidationException;
+import org.dcistudent.banking.facades.ScannerFacade;
 import org.dcistudent.banking.factories.AccountFactory;
 import org.dcistudent.banking.hydrators.AccountHydrator;
 import org.dcistudent.banking.interfaces.models.AccountInterface;
@@ -13,10 +14,9 @@ import org.dcistudent.banking.renderers.ScannerRenderer;
 
 import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
-import java.util.Scanner;
 
 public final class AccountService {
-    private final Scanner scanner;
+    private final ScannerFacade scanner;
     private final AccountManager accountManager;
     private static final String GIRO_ACCOUNT;
 
@@ -24,14 +24,14 @@ public final class AccountService {
         GIRO_ACCOUNT = CheckingAccount.class.getSimpleName();
     }
 
-    public AccountService(Scanner scanner) {
-        this.scanner = scanner;
+    public AccountService() {
+        this.scanner = ScannerFacade.getInstance();
         this.accountManager = new AccountManager();
     }
 
     public AccountInterface create(CustomerInterface customer) {
         AccountInterface account = null;
-        Integer accountType;
+        Integer accountType = 0;
 
         ScannerRenderer.renderSeparated("Bank Account Creation");
         System.out.println("Select account type:");
@@ -39,7 +39,12 @@ public final class AccountService {
             System.out.println(key + ". " + AccountFactory.ACCOUNT_TYPES.get(key));
         }
         ScannerRenderer.renderInputChoice();
-        accountType = scanner.nextInt();
+        try {
+            accountType = scanner.getInt();
+        } catch (InputMismatchException e) {
+            ScannerRenderer.renderSeparated("Invalid account type.");
+            this.create(customer);
+        }
 
         try {
             account = AccountFactory.create(accountType);
@@ -67,9 +72,9 @@ public final class AccountService {
         ScannerRenderer.renderSeparated("Bank Account Security");
         ScannerRenderer.renderInput("Enter your 4-digit PIN code");
         try {
-            account.setPin(scanner.nextInt());
+            account.setPin(scanner.getInt());
             customer.setAccount(account);
-        } catch (PinValidationException e) {
+        } catch (PinValidationException | IllegalArgumentException e) {
             ScannerRenderer.renderSeparated(e.getMessage());
             this.createAccountSecurity(customer);
         } catch (InputMismatchException e) {
@@ -82,13 +87,18 @@ public final class AccountService {
 
     private AccountService createAccountInitialDeposit(CustomerInterface customer) {
         AccountInterface account = customer.getAccount();
-        Double amount;
+        Double amount = 0.0;
 
         ScannerRenderer.renderSeparated(
                 String.format("Initial Deposit (Limit: %.2f)", account.getLimitDeposit())
         );
         ScannerRenderer.renderInput("Enter amount to deposit");
-        amount = scanner.nextDouble();
+        try {
+            amount = scanner.getDouble();
+        } catch (IllegalArgumentException e) {
+            ScannerRenderer.renderSeparated(e.getMessage());
+            this.createAccountInitialDeposit(customer);
+        }
 
         try {
             account.deposit(amount);
@@ -103,13 +113,18 @@ public final class AccountService {
 
     private void createAccountWithdrawLimit(CustomerInterface customer) {
         AccountInterface account = customer.getAccount();
-        Double amount;
+        Double amount = 0.0;
 
         ScannerRenderer.renderSeparated(
                 String.format("Withdraw Limit (Limit: %.2f)", account.getLimitWithdrawal())
         );
         ScannerRenderer.renderInput("Enter amount to set as custom withdrawal limit");
-        amount = scanner.nextDouble();
+        try {
+            amount = scanner.getDouble();
+        } catch (IllegalArgumentException e) {
+            ScannerRenderer.renderSeparated(e.getMessage());
+            this.createAccountWithdrawLimit(customer);
+        }
 
         try {
             account.setLimitWithdrawalCustom(amount);
@@ -130,13 +145,18 @@ public final class AccountService {
 
     public void deposit(CustomerInterface customer) {
         AccountInterface account = customer.getAccount();
-        Double amount;
+        Double amount = 0.0;
 
         ScannerRenderer.renderSeparated(
                 String.format("Deposition (Limit: %.2f)", account.getLimitDeposit())
         );
         ScannerRenderer.renderInput("Enter amount to deposit");
-        amount = scanner.nextDouble();
+        try {
+            amount = scanner.getDouble();
+        } catch (IllegalArgumentException e) {
+            ScannerRenderer.renderSeparated(e.getMessage());
+            this.deposit(customer);
+        }
 
         try {
             account.deposit(amount);
@@ -166,7 +186,13 @@ public final class AccountService {
         }
 
         ScannerRenderer.renderInput("Enter amount to withdraw");
-        amount = scanner.nextDouble();
+        try {
+            amount = scanner.getDouble();
+        } catch (IllegalArgumentException e) {
+            ScannerRenderer.renderSeparated(e.getMessage());
+            this.withdraw(customer);
+            return;
+        }
         this.transferPinValidation(account);
 
         if (account.getAccountName().equals(GIRO_ACCOUNT)) {
@@ -191,7 +217,7 @@ public final class AccountService {
         ScannerRenderer.renderSeparated("Transfer");
         ScannerRenderer.renderInput("Enter recipient's account number");
         try {
-            recipient = this.getById(scanner.next());
+            recipient = this.getById(scanner.getNonEmpty());
         } catch (NoSuchElementException e) {
             ScannerRenderer.renderSeparated("Recipient account not found.");
             this.transfer(customer);
@@ -199,7 +225,13 @@ public final class AccountService {
         }
 
         ScannerRenderer.renderInput("Enter amount to transfer");
-        amount = scanner.nextDouble();
+        try {
+            amount = scanner.getDouble();
+        } catch (IllegalArgumentException e) {
+            ScannerRenderer.renderSeparated(e.getMessage());
+            this.transfer(customer);
+            return;
+        }
         this.transferPinValidation(account);
 
         try {
@@ -215,11 +247,16 @@ public final class AccountService {
     }
 
     private void transferPinValidation(AccountInterface account) {
-        Integer pin;
+        Integer pin = 0;
 
         ScannerRenderer.renderSeparated("Transfer Security");
         ScannerRenderer.renderInput("Enter recipient's 4-digit PIN code");
-        pin = scanner.nextInt();
+        try {
+            pin = scanner.getInt();
+        } catch (IllegalArgumentException e) {
+            ScannerRenderer.renderSeparated(e.getMessage());
+            this.transferPinValidation(account);
+        }
 
         if (account.getPin().equals(pin) == false) {
             ScannerRenderer.renderSeparated("Invalid PIN code.");
