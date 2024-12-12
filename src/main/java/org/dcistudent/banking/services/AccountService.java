@@ -179,15 +179,6 @@ public final class AccountService {
                 String.format("Withdrawal (Limit: %.2f)", account.getLimitWithdrawalCustom())
         );
 
-        if (account.getOverdraftCount() >= account.getOverdraftLimit()) {
-            throw new BankTransferException(
-                    String.format(
-                            "Overdraft limit of %d exceeded. Balance must be over 0 again for reset of overdraft limit.",
-                            account.getOverdraftLimit()
-                    )
-            );
-        }
-
         ScannerRenderer.renderInput("Enter amount to withdraw");
         try {
             amount = ScannerFacade.getDouble();

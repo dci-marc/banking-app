@@ -116,7 +116,10 @@ public abstract class AbstractAccount implements AccountInterface {
     private Double setOverdraftAmount(Double amount) {
         if (this.getOverdraftCount() >= OVERDRAFT_LIMIT) {
             throw new BankTransferException(
-                    String.format("Overdraft limit of %d exceeded.", OVERDRAFT_LIMIT)
+                    String.format(
+                            "Overdraft limit of %d exceeded. Balance must be over 0 again for reset of overdraft limit.",
+                            OVERDRAFT_LIMIT
+                    )
             );
         }
 
