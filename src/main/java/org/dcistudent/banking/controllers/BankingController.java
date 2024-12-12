@@ -93,8 +93,9 @@ public final class BankingController {
         System.out.println("1. Show Balance");
         System.out.println("2. Deposit");
         System.out.println("3. Withdraw");
-        System.out.println("4. Reset Password");
-        System.out.println("5. Logout");
+        System.out.println("4. Transfer");
+        System.out.println("5. Reset Password");
+        System.out.println("6. Logout");
 
         try {
             this.processCustomerMenu();
@@ -142,6 +143,18 @@ public final class BankingController {
                 break;
             case 4:
                 try {
+                    this.bankingService.transfer();
+                } catch (Exception e) {
+                    ScannerRenderer.renderSeparated(e.getMessage());
+                    this.customerMenu();
+                }
+
+                ScannerRenderer.renderSeparated(
+                        String.format("Success! Your new balance is: %.2f", this.bankingService.checkBalance())
+                );
+                break;
+            case 5:
+                try {
                     this.bankingService.resetPassword();
                 } catch (NoSuchAlgorithmException | PasswordValidationException e) {
                     ScannerRenderer.renderSeparated(e.getMessage());
@@ -153,7 +166,7 @@ public final class BankingController {
                 this.bankingService.closeSession();
                 this.sessionMenu();
                 break;
-            case 5:
+            case 6:
                 this.loggedIn = false;
                 this.bankingService.closeSession();
                 ScannerRenderer.renderSeparated("Bye, bye.");

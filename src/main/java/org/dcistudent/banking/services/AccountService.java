@@ -12,6 +12,7 @@ import org.dcistudent.banking.models.CheckingAccount;
 import org.dcistudent.banking.renderers.ScannerRenderer;
 
 import java.util.InputMismatchException;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public final class AccountService {
@@ -119,6 +120,10 @@ public final class AccountService {
         }
     }
 
+    public AccountInterface getById(String id) {
+        return AccountHydrator.hydrate(this.accountManager.findById(id));
+    }
+
     public AccountInterface getByCustomerId(String customerId) {
         return AccountHydrator.hydrate(this.accountManager.findByCustomerId(customerId));
     }
@@ -176,6 +181,37 @@ public final class AccountService {
         }
 
         this.accountManager.persist(new AccountHydrator(), AccountHydrator.hydrate(account));
+    }
+
+    public void transfer(CustomerInterface customer) {
+        AccountInterface account = customer.getAccount();
+        AccountInterface recipient;
+        Double amount;
+
+        ScannerRenderer.renderSeparated("Transfer");
+        ScannerRenderer.renderInput("Enter recipient's account number");
+        try {
+            recipient = this.getById(scanner.next());
+        } catch (NoSuchElementException e) {
+            ScannerRenderer.renderSeparated("Recipient account not found.");
+            this.transfer(customer);
+            return;
+        }
+
+        ScannerRenderer.renderInput("Enter amount to transfer");
+        amount = scanner.nextDouble();
+        this.transferPinValidation(account);
+
+        try {
+            account.withdraw(amount);
+            recipient.deposit(amount);
+        } catch (BankTransferException | LimitValidationException e) {
+            ScannerRenderer.renderSeparated(e.getMessage());
+            this.transfer(customer);
+        }
+
+        this.accountManager.persist(new AccountHydrator(), AccountHydrator.hydrate(account));
+        this.accountManager.persist(new AccountHydrator(), AccountHydrator.hydrate(recipient));
     }
 
     private void transferPinValidation(AccountInterface account) {

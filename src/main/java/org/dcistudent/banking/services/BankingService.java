@@ -38,6 +38,10 @@ public final class BankingService {
         this.accountService.withdraw(this.customer);
     }
 
+    public void transfer() {
+        this.accountService.transfer(this.customer);
+    }
+
     public void resetPassword() throws NoSuchAlgorithmException, PasswordValidationException {
         this.customerService.resetPassword(this.customer);
     }
