@@ -4,6 +4,7 @@ import lombok.NonNull;
 import org.dcistudent.banking.interfaces.HydratorInterface;
 import org.dcistudent.banking.interfaces.entities.EntityInterface;
 import org.dcistudent.banking.interfaces.managers.AbstractManagerInterface;
+import org.dcistudent.banking.managers.criterias.FindByUuid;
 
 import java.io.*;
 import java.util.HashMap;
@@ -31,14 +32,19 @@ public abstract class AbstractManager implements AbstractManagerInterface {
         return map;
     }
 
-    public EntityInterface findById(HydratorInterface entityHydrator, String id) {
+    public EntityInterface findById(HydratorInterface entityHydrator, FindByUuid criteria) throws Exception {
+        if (criteria.isInvalid() == true) {
+            throw criteria.getException();
+        }
+
         return this
-            .findAll(entityHydrator)
-            .values()
-            .stream()
-            .filter(entity -> entity.getId().equals(id))
-            .findFirst()
-            .orElseThrow();
+                .findAll(entityHydrator)
+                .values()
+                .stream()
+                .filter(entity -> entity.getId().equals(criteria.getId()))
+                .findFirst()
+                .orElseThrow()
+                ;
     }
 
     public void persist(HydratorInterface entityHydrator, Map<String, EntityInterface> map) {
@@ -53,17 +59,19 @@ public abstract class AbstractManager implements AbstractManagerInterface {
         Map<String, EntityInterface> map = this.findAll(entityHydrator);
 
         try {
-            this.findById(entityHydrator, entity.getId());
+            this.findById(entityHydrator, new FindByUuid(entity.getId()));
 
             map.forEach((k, v) -> {
                 if (v.getId().equals(entity.getId())) {
                     map.put(k, entity);
                 }
             });
-        } catch(NoSuchElementException e) {
+        } catch (NoSuchElementException e) {
             map.put(entity.getId(), entity);
             this.persist(entityHydrator, map);
             return;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
 
         this.persist(entityHydrator, map);

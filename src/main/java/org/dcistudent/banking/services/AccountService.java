@@ -9,6 +9,7 @@ import org.dcistudent.banking.hydrators.AccountHydrator;
 import org.dcistudent.banking.interfaces.models.AccountInterface;
 import org.dcistudent.banking.interfaces.models.CustomerInterface;
 import org.dcistudent.banking.managers.AccountManager;
+import org.dcistudent.banking.managers.criterias.FindByUuid;
 import org.dcistudent.banking.models.CheckingAccount;
 import org.dcistudent.banking.renderers.ScannerRenderer;
 
@@ -133,12 +134,12 @@ public final class AccountService {
         }
     }
 
-    public AccountInterface getById(String id) {
-        return AccountHydrator.hydrate(this.accountManager.findById(id));
+    public AccountInterface getById(String id) throws Exception {
+        return AccountHydrator.hydrate(this.accountManager.findById(new FindByUuid(id)));
     }
 
     public AccountInterface getByCustomerId(String customerId) {
-        return AccountHydrator.hydrate(this.accountManager.findByCustomerId(customerId));
+        return AccountHydrator.hydrate(this.accountManager.findByCustomerId(new FindByUuid(customerId)));
     }
 
     public void deposit(CustomerInterface customer) {
@@ -216,7 +217,7 @@ public final class AccountService {
         ScannerRenderer.renderInput("Enter recipient's account number");
         try {
             recipient = this.getById(ScannerFacade.getNonEmpty());
-        } catch (NoSuchElementException e) {
+        } catch (Exception e) {
             ScannerRenderer.renderSeparated("Recipient account not found.");
             this.transfer(customer);
             return;
