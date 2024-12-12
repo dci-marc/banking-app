@@ -25,15 +25,11 @@ public final class AccountFactory {
     private AccountFactory() {}
 
     @NonNull
-    public static AccountInterface create(Integer type) {
+    public static AccountInterface create(Integer id) {
         String accountId;
-
-        if (ACCOUNT_TYPES.containsKey(type) == false) {
-            throw new IllegalArgumentException("Invalid account type.");
-        }
-
         accountId = UUID.randomUUID().toString();
-        return switch (type) {
+
+        return switch (id) {
             case 1 -> new SilverAccount(accountId);
             case 2 -> new GoldAccount(accountId);
             case 3 -> new PlatinumAccount(accountId);
