@@ -9,14 +9,14 @@ import java.util.Map;
 
 public interface AbstractManagerInterface {
     @NonNull
-    public Map<String, EntityInterface> findAll(HydratorInterface hydrator);
+    Map<String, EntityInterface> findAll(HydratorInterface hydrator);
 
     @NonNull
-    public EntityInterface findById(HydratorInterface hydrator, FindByUuid id) throws Exception;
+    EntityInterface findById(HydratorInterface hydrator, FindByUuid id) throws Exception;
 
     @NonNull
-    public void persist(HydratorInterface hydrator, Map<String, EntityInterface> map);
+    void persist(HydratorInterface hydrator, Map<String, EntityInterface> map);
 
     @NonNull
-    public void persist(HydratorInterface hydrator, EntityInterface entity);
+    void persist(HydratorInterface hydrator, EntityInterface entity);
 }
