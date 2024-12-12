@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public final class AccountManager extends AbstractManager {
-    private static final String FILE_PATH = "src/main/resources/accounts.json";
+    private static final String FILE_PATH = "src/main/resources/accounts.csv";
 
     public AccountManager() {
         super(FILE_PATH);
