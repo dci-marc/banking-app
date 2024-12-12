@@ -14,7 +14,6 @@ import org.dcistudent.banking.models.CheckingAccount;
 import org.dcistudent.banking.renderers.ScannerRenderer;
 
 import java.util.InputMismatchException;
-import java.util.NoSuchElementException;
 
 public final class AccountService {
     private final AccountManager accountManager;
