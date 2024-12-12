@@ -56,7 +56,7 @@ public final class BankingController {
         }
 
         switch (option) {
-            case 1:
+            case 1 -> {
                 try {
                     customer = this.bankingService.signup();
                     ScannerRenderer.renderSeparated("Welcome, " + customer + "! Please login now.");
@@ -65,8 +65,8 @@ public final class BankingController {
                     ScannerRenderer.renderSeparated(e.getMessage());
                     this.sessionMenu();
                 }
-                break;
-            case 2:
+            }
+            case 2 -> {
                 try {
                     customer = this.bankingService.login();
                     ScannerRenderer.renderSeparated("Welcome back, " + customer + "!");
@@ -82,12 +82,12 @@ public final class BankingController {
 
                     this.sessionMenu();
                 }
-                break;
-            case 3:
+            }
+            case 3 -> {
                 ScannerRenderer.renderSeparated("Bye, bye.");
                 System.exit(0);
-            default:
-                ScannerRenderer.renderSeparated("Invalid option. Please try again.");
+            }
+            default -> ScannerRenderer.renderSeparated("Invalid option. Please try again.");
         }
 
         this.sessionMenu();
@@ -122,12 +122,10 @@ public final class BankingController {
         }
 
         switch (option) {
-            case 1:
-                ScannerRenderer.renderSeparated(
-                        String.format("Your balance is: %.2f", this.bankingService.checkBalance())
-                );
-                break;
-            case 2:
+            case 1 -> ScannerRenderer.renderSeparated(
+                    String.format("Your balance is: %.2f", this.bankingService.checkBalance())
+            );
+            case 2 -> {
                 try {
                     this.bankingService.deposit();
                 } catch (Exception e) {
@@ -138,8 +136,8 @@ public final class BankingController {
                 ScannerRenderer.renderSeparated(
                         String.format("Success! Your new balance is: %.2f", this.bankingService.checkBalance())
                 );
-                break;
-            case 3:
+            }
+            case 3 -> {
                 try {
                     this.bankingService.withdraw();
                 } catch (Exception e) {
@@ -150,8 +148,8 @@ public final class BankingController {
                 ScannerRenderer.renderSeparated(
                         String.format("Success! Your new balance is: %.2f", this.bankingService.checkBalance())
                 );
-                break;
-            case 4:
+            }
+            case 4 -> {
                 try {
                     this.bankingService.transfer();
                 } catch (Exception e) {
@@ -162,8 +160,8 @@ public final class BankingController {
                 ScannerRenderer.renderSeparated(
                         String.format("Success! Your new balance is: %.2f", this.bankingService.checkBalance())
                 );
-                break;
-            case 5:
+            }
+            case 5 -> {
                 try {
                     this.bankingService.resetPassword();
                 } catch (NoSuchAlgorithmException | PasswordValidationException e) {
@@ -175,16 +173,15 @@ public final class BankingController {
                 this.loggedIn = false;
                 this.bankingService.closeSession();
                 this.sessionMenu();
-                break;
-            case 6:
+            }
+            case 6 -> {
                 this.loggedIn = false;
                 this.bankingService.closeSession();
                 ScannerRenderer.renderSeparated("Bye, bye.");
 
                 this.sessionMenu();
-                break;
-            default:
-                ScannerRenderer.renderSeparated("Invalid option. Please Try again.");
+            }
+            default -> ScannerRenderer.renderSeparated("Invalid option. Please Try again.");
         }
 
         this.customerMenu();
