@@ -47,7 +47,7 @@ public abstract class AbstractManager implements AbstractManagerInterface {
                 .filter(entity -> entity.getId().equals(criteria.getId()))
                 .findFirst()
                 .orElseThrow()
-                ;
+        ;
     }
 
     @NonNull
