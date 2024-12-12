@@ -26,8 +26,7 @@ public class FindById extends BaseCriteria{
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return String.valueOf(this.getId());
     }
 }

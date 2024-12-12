@@ -39,5 +39,4 @@ public final class FindByUuid extends BaseCriteria {
             this.setInvalid();
         }
     }
-
 }

@@ -11,8 +11,7 @@ class FindByIds extends BaseCriteria {
     private final List<Integer> ids;
 
     @NonNull
-    public FindByIds(List<Integer> ids)
-    {
+    public FindByIds(List<Integer> ids) {
         super();
         this.ids = ids;
         this.invalidate();
