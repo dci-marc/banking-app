@@ -19,12 +19,6 @@ import java.util.InputMismatchException;
 public final class AccountService {
     @NonNull
     private final AccountManager accountManager;
-    @NonNull
-    private static final String GIRO_ACCOUNT;
-
-    static {
-        GIRO_ACCOUNT = CheckingAccount.class.getSimpleName();
-    }
 
     public AccountService() {
         this.accountManager = new AccountManager();
@@ -204,7 +198,7 @@ public final class AccountService {
         }
         this.transferPinValidation(account);
 
-        if (account.getAccountName().equals(GIRO_ACCOUNT)) {
+        if (account.getAccountName().equals(CheckingAccount.class.getSimpleName())) {
             System.out.printf("%nInstant card balance validation");
 
             Thread.sleep(1000);
