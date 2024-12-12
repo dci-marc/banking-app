@@ -32,7 +32,7 @@ public final class CustomerService {
         username = String.valueOf(this.scanner.next());
         try {
             this.customerManager.findByUsername(username);
-            throw new UsernameValidationException("Username already exists.");
+            throw new UsernameValidationException("Username already taken.");
         } catch (NoSuchElementException e) {
             customer.setUsername(username);
             ScannerRenderer.renderInput("Enter your password");
