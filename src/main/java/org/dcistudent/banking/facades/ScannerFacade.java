@@ -34,4 +34,15 @@ public final class ScannerFacade {
         }
         throw new IllegalArgumentException("Invalid input. Please enter a non-empty string.");
     }
+
+    public static Boolean getYesNo() {
+        String input = SCANNER.nextLine().trim();
+        if (input.equalsIgnoreCase("y") || input.equalsIgnoreCase("yes")) {
+            return true;
+        }
+        if (input.equalsIgnoreCase("n") || input.equalsIgnoreCase("no")) {
+            return false;
+        }
+        throw new IllegalArgumentException("Invalid input. Please enter 'y' or 'n'.");
+    }
 }
