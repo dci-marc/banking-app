@@ -4,6 +4,7 @@ import lombok.NonNull;
 import org.dcistudent.banking.exceptions.validations.customers.UsernameValidationException;
 import org.dcistudent.banking.facades.ScannerFacade;
 import org.dcistudent.banking.hydrators.CustomerHydrator;
+import org.dcistudent.banking.interfaces.models.AccountInterface;
 import org.dcistudent.banking.interfaces.models.CustomerInterface;
 import org.dcistudent.banking.managers.CustomerManager;
 import org.dcistudent.banking.models.Customer;
@@ -86,6 +87,23 @@ public final class CustomerService {
 
         customer.setPassword(customer.hashPassword(password));
 
+        this.customerManager.persist(new CustomerHydrator(), CustomerHydrator.hydrate(customer));
+    }
+
+    @NonNull
+    public void closeAccount(CustomerInterface customer) {
+        Boolean choice;
+        ScannerRenderer.renderSeparated("Close Account");
+        ScannerRenderer.renderInput("Are you sure you want to close your account? (yes/no)");
+        choice = ScannerFacade.getYesNo();
+        if (choice == false) {
+            ScannerRenderer.renderSeparated("Account closure cancelled.");
+        }
+
+        customer.setActive(false);
+        AccountInterface account = customer.getAccount();
+
+        this.accountService.closeAccount(account);
         this.customerManager.persist(new CustomerHydrator(), CustomerHydrator.hydrate(customer));
     }
 }

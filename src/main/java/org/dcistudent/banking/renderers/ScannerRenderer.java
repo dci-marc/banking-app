@@ -7,12 +7,14 @@ public final class ScannerRenderer {
             "================================================================================"
     ;
 
+    private ScannerRenderer() {}
+
     @NonNull
     public static void renderSeparated(String line) {
         System.out.printf("%n%s%n%s%n", line, SEPARATOR);
     }
 
-    public static void renderSeparater() {
+    public static void renderSeparator() {
         System.out.printf("%s%n", SEPARATOR);
     }
 

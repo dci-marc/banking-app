@@ -250,6 +250,13 @@ public final class AccountService {
     }
 
     @NonNull
+    public void closeAccount(AccountInterface account) {
+        account.setActive(false);
+
+        this.accountManager.persist(new AccountHydrator(), AccountHydrator.hydrate(account));
+    }
+
+    @NonNull
     private void transferPinValidation(AccountInterface account) {
         Integer pin = 0;
 

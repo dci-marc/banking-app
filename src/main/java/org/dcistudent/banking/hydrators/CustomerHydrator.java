@@ -14,6 +14,7 @@ public final class CustomerHydrator extends AbstractHydrator {
         customer.setUsername(String.valueOf(fields[1]));
         customer.setPassword(String.valueOf(fields[2]));
         customer.setFirstName(String.valueOf(fields[3]));
+        customer.setActive(Boolean.valueOf(fields[4]));
 
         return customer;
     }
@@ -29,6 +30,7 @@ public final class CustomerHydrator extends AbstractHydrator {
             throw new RuntimeException(e);
         }
         customer.setFirstName(customerEntity.getFirstName());
+        customer.setActive(customerEntity.getActive());
 
         return customer;
     }
@@ -40,6 +42,7 @@ public final class CustomerHydrator extends AbstractHydrator {
         entity.setUsername(customer.getUsername());
         entity.setPassword(customer.getPassword());
         entity.setFirstName(customer.getFirstName());
+        entity.setActive(customer.getActive());
 
         return entity;
     }

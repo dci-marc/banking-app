@@ -45,6 +45,7 @@ public abstract class AbstractManager implements AbstractManagerInterface {
                 .values()
                 .stream()
                 .filter(entity -> entity.getId().equals(criteria.getId()))
+                .filter(EntityInterface::getActive)
                 .findFirst()
                 .orElseThrow()
         ;
