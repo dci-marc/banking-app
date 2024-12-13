@@ -21,6 +21,10 @@ public interface CustomerInterface {
 
     @NonNull
     void setFirstName(String firstName);
+    Boolean getActive();
+
+    @NonNull
+    void setActive(Boolean active);
     AccountInterface getAccount();
 
     @NonNull

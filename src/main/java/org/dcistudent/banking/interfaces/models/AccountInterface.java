@@ -39,6 +39,10 @@ public interface AccountInterface {
     @NonNull
     void setOverdraftCount(Integer overdraftCount);
     Integer getOverdraftLimit();
+    Boolean getActive();
+
+    @NonNull
+    void setActive(Boolean active);
 
     @NonNull
     AccountInterface withdraw(Double amount) throws LimitValidationException;

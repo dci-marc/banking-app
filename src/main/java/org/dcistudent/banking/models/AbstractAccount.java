@@ -25,6 +25,8 @@ public abstract class AbstractAccount implements AccountInterface {
     @NonNull
     private Integer overdraftCount = 0;
     @NonNull
+    private Boolean active = true;
+    @NonNull
     private static final Integer OVERDRAFT_LIMIT = 2;
     @NonNull
     private static final Double OVERDRAFT_FEE = 50.00;

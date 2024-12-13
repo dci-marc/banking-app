@@ -15,6 +15,7 @@ public final class AccountHydrator extends AbstractHydrator {
         account.setAccountType(Integer.parseInt(fields[3]));
         account.setBalance(Double.parseDouble(fields[4]));
         account.setOverdraftCount(Integer.parseInt(fields[5]));
+        account.setActive(Boolean.parseBoolean(fields[6]));
 
         return account;
     }
@@ -28,6 +29,7 @@ public final class AccountHydrator extends AbstractHydrator {
         account.setAccountType(accountEntity.getAccountType());
         account.setBalance(accountEntity.getBalance());
         account.setOverdraftCount(accountEntity.getOverdraftCount());
+        account.setActive(accountEntity.getActive());
 
         return account;
     }
@@ -41,6 +43,7 @@ public final class AccountHydrator extends AbstractHydrator {
         entity.setAccountType(account.getAccountType());
         entity.setBalance(account.getBalance());
         entity.setOverdraftCount(account.getOverdraftCount());
+        entity.setActive(account.getActive());
 
         return entity;
     }

@@ -99,7 +99,8 @@ public final class BankingController {
         System.out.println("3. Withdraw");
         System.out.println("4. Transfer");
         System.out.println("5. Reset Password");
-        System.out.println("6. Logout");
+        System.out.println("6. Close Account");
+        System.out.println("7. Logout");
 
         try {
             this.processCustomerMenu();
@@ -169,12 +170,21 @@ public final class BankingController {
                     this.customerMenu();
                 }
 
-                ScannerRenderer.renderSeparated("Success! Please login again.");
                 this.loggedIn = false;
                 this.bankingService.closeSession();
+                ScannerRenderer.renderSeparated("Success! Please login again.");
+
                 this.sessionMenu();
             }
             case 6 -> {
+                this.bankingService.closeAccount();
+                this.loggedIn = false;
+                this.bankingService.closeSession();
+                ScannerRenderer.renderSeparated("Success! Your account is now closed.");
+
+                this.sessionMenu();
+            }
+            case 7 -> {
                 this.loggedIn = false;
                 this.bankingService.closeSession();
                 ScannerRenderer.renderSeparated("Bye, bye.");

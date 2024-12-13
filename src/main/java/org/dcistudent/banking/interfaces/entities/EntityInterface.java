@@ -8,6 +8,10 @@ public interface EntityInterface {
     @NonNull
     void setId(String id);
 
+    Boolean getActive();
+    @NonNull
+    void setActive(Boolean active);
+
     @Override
     String toString();
 }

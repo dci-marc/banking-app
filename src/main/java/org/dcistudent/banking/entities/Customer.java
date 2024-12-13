@@ -14,13 +14,15 @@ public final class Customer implements EntityInterface {
     @NonNull
     private String firstName;
     @NonNull
+    private Boolean active = true;
 
     @Override
     public String toString() {
         return this.getId() +
                 "," + this.getUsername() +
                 "," + this.getPassword() +
-                "," + this.getFirstName()
+                "," + this.getFirstName() +
+                "," + this.getActive()
         ;
     }
 }
