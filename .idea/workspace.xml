@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0de4c2ff-8a89-4efc-9607-76cd5423d761" name="Changes" comment="" />
+    <list default="true" id="75cc069d-a8f4-409d-93e2-8fc2c90a93ac" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,54 +16,52 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="AnnotationType" />
         <option value="Exception" />
         <option value="Class" />
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="Security Analysis" />
+  </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 3
+  &quot;associatedIndex&quot;: 4
 }</component>
-  <component name="ProjectId" id="2pyN23HHvQyMy2qu1S5ZAj8XC19" />
+  <component name="ProjectId" id="2q9vIyfDYkvjLGzmCCkHuktQ2My" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
     "Application.Banking.executor": "Run",
-    "Application.BankingController.executor": "Run",
-    "Downloaded.Files.Path.Enabled": "false",
+    "Downloaded.Files.Path.Enabled": "true",
     "Repository.Attach.Annotations": "false",
     "Repository.Attach.JavaDocs": "false",
     "Repository.Attach.Sources": "false",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "feature/implement-transaction-history",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/home/student/git/banking-app",
     "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.fileTypes",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="org.dcistudent.banking.services" />
-    </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="org.dcistudent.banking.managers.criterias" />
-      <recent name="org.dcistudent.banking.hydrators" />
-    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="org.dcistudent.banking.models" />
+      <recent name="org.dcistudent.banking.interfaces.managers" />
+      <recent name="org.dcistudent.banking.managers" />
     </key>
   </component>
   <component name="RunManager">
@@ -84,32 +84,34 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="0de4c2ff-8a89-4efc-9607-76cd5423d761" name="Changes" comment="" />
-      <created>1733734146202</created>
+      <changelist id="75cc069d-a8f4-409d-93e2-8fc2c90a93ac" name="Changes" comment="" />
+      <created>1734087529675</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1733734146202</updated>
-      <workItem from="1733734147330" duration="21164000" />
-      <workItem from="1733818478997" duration="1289000" />
-      <workItem from="1733820372126" duration="21562000" />
-      <workItem from="1733842162340" duration="3597000" />
-      <workItem from="1733903222216" duration="225000" />
-      <workItem from="1733903459296" duration="4035000" />
-      <workItem from="1733909116272" duration="23484000" />
-      <workItem from="1733934038060" duration="281000" />
-      <workItem from="1733990251953" duration="4604000" />
-      <workItem from="1733997161727" duration="91000" />
-      <workItem from="1733997253959" duration="10975000" />
-      <workItem from="1734008245245" duration="6835000" />
-      <workItem from="1734078981921" duration="695000" />
+      <updated>1734087529675</updated>
+      <workItem from="1734087530804" duration="10043000" />
+      <workItem from="1734097582315" duration="4467000" />
+      <workItem from="1734102058490" duration="63000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/dcistudent/banking/managers/AbstractManager.java</url>
+          <line>82</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/dcistudent/banking/managers/AbstractManager.java</url>
+          <line>56</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
