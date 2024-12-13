@@ -9,9 +9,11 @@ import org.dcistudent.banking.factories.AccountFactory;
 import org.dcistudent.banking.hydrators.AccountHydrator;
 import org.dcistudent.banking.interfaces.models.AccountInterface;
 import org.dcistudent.banking.interfaces.models.CustomerInterface;
+import org.dcistudent.banking.interfaces.models.TransactionInterface;
 import org.dcistudent.banking.managers.AccountManager;
 import org.dcistudent.banking.managers.criterias.FindByUuid;
 import org.dcistudent.banking.models.CheckingAccount;
+import org.dcistudent.banking.models.Transaction;
 import org.dcistudent.banking.renderers.ScannerRenderer;
 
 import java.util.InputMismatchException;
@@ -19,9 +21,12 @@ import java.util.InputMismatchException;
 public final class AccountService {
     @NonNull
     private final AccountManager accountManager;
+    @NonNull
+    private final TransactionService transactionService;
 
     public AccountService() {
         this.accountManager = new AccountManager();
+        this.transactionService = new TransactionService();
     }
 
     @NonNull
@@ -147,7 +152,11 @@ public final class AccountService {
     @NonNull
     public void deposit(CustomerInterface customer) {
         AccountInterface account = customer.getAccount();
+        TransactionInterface transaction = new Transaction();
         Double amount = 0.0;
+
+        transaction.setAccountId(account.getId());
+        transaction.setBalanceBefore(account.getBalance());
 
         ScannerRenderer.renderSeparated(
                 String.format("Deposition (Limit: %.2f)", account.getLimitDeposit())
@@ -167,13 +176,21 @@ public final class AccountService {
             this.deposit(customer);
         }
 
+        transaction.setAmount(amount);
+        transaction.setBalanceAfter(account.getBalance());
+
         this.accountManager.persist(new AccountHydrator(), AccountHydrator.hydrate(account));
+        this.transactionService.registerTransaction(transaction);
     }
 
     @NonNull
     public void withdraw(CustomerInterface customer) throws InterruptedException {
         AccountInterface account = customer.getAccount();
-        Double amount;
+        TransactionInterface transaction = new Transaction();
+        Double amount = 0.0;
+
+        transaction.setAccountId(account.getId());
+        transaction.setBalanceBefore(account.getBalance());
 
         ScannerRenderer.renderSeparated(
                 String.format("Withdrawal (Limit: %.2f)", account.getLimitWithdrawalCustom())
@@ -206,7 +223,11 @@ public final class AccountService {
             this.withdraw(customer);
         }
 
+        transaction.setAmount(amount);
+        transaction.setBalanceAfter(account.getBalance());
+
         this.accountManager.persist(new AccountHydrator(), AccountHydrator.hydrate(account));
+        this.transactionService.registerTransaction(transaction);
     }
 
     @NonNull

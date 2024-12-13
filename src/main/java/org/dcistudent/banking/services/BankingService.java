@@ -13,11 +13,14 @@ public final class BankingService {
     @NonNull
     private final AccountService accountService;
     @NonNull
+    private TransactionService transactionService;
+    @NonNull
     private CustomerInterface customer = new Customer();
 
     public BankingService() {
         this.customerService = new CustomerService();
         this.accountService = new AccountService();
+        this.transactionService = new TransactionService();
     }
 
     public CustomerInterface signup() throws NoSuchAlgorithmException {
@@ -43,6 +46,10 @@ public final class BankingService {
 
     public void transfer() {
         this.accountService.transfer(this.customer);
+    }
+
+    public void transactions() {
+        this.transactionService.getTransactionsByDays(this.customer.getAccount());
     }
 
     public void resetPassword() throws NoSuchAlgorithmException, PasswordValidationException {
