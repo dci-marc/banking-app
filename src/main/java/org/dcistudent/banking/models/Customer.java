@@ -21,6 +21,8 @@ public final class Customer implements CustomerInterface {
     @NonNull
     private String firstName;
     @NonNull
+    private Boolean active = true;
+    @NonNull
     private AccountInterface account;
     private static final Integer PASSWORD_MIN_LENGTH = 6;
 

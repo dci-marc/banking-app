@@ -49,6 +49,10 @@ public final class BankingService {
         this.customerService.resetPassword(this.customer);
     }
 
+    public void closeAccount() {
+        this.customerService.closeAccount(this.customer);
+    }
+
     public void closeSession() {
         this.customer = new Customer();
     }

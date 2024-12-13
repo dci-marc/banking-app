@@ -17,6 +17,8 @@ public final class Account implements EntityInterface {
     private Double balance = 0.0;
     @NonNull
     private Integer overdraftCount = 0;
+    @NonNull
+    private Boolean active = true;
 
     @Override
     public String toString() {
@@ -25,7 +27,8 @@ public final class Account implements EntityInterface {
                 "," + this.getPin() +
                 "," + this.getAccountType() +
                 "," + this.getBalance() +
-                "," + this.getOverdraftCount()
+                "," + this.getOverdraftCount() +
+                "," + this.getActive()
         ;
     }
 }
