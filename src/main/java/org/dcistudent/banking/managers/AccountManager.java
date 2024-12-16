@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public final class AccountManager extends AbstractManager {
-    private static final String FILE_PATH = "src/main/resources/accounts.csv";
+    private static final String FILE_PATH = "src/main/resources/db/accounts.csv";
 
     public AccountManager() {
         super(FILE_PATH);
