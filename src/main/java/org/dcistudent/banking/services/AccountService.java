@@ -24,9 +24,9 @@ public final class AccountService {
     @NonNull
     private final TransactionService transactionService;
 
-    public AccountService() {
-        this.accountManager = new AccountManager();
-        this.transactionService = new TransactionService();
+    public AccountService(AccountManager accountManager, TransactionService transactionService) {
+        this.accountManager = accountManager;
+        this.transactionService = transactionService;
     }
 
     @NonNull

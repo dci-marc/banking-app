@@ -3,8 +3,14 @@ package org.dcistudent.banking.controllers;
 import org.dcistudent.banking.exceptions.validations.customers.PasswordValidationException;
 import org.dcistudent.banking.facades.ScannerFacade;
 import org.dcistudent.banking.interfaces.models.CustomerInterface;
+import org.dcistudent.banking.managers.AccountManager;
+import org.dcistudent.banking.managers.CustomerManager;
+import org.dcistudent.banking.managers.TransactionManager;
 import org.dcistudent.banking.renderers.ScannerRenderer;
+import org.dcistudent.banking.services.AccountService;
 import org.dcistudent.banking.services.BankingService;
+import org.dcistudent.banking.services.CustomerService;
+import org.dcistudent.banking.services.TransactionService;
 
 import java.security.NoSuchAlgorithmException;
 
@@ -19,7 +25,15 @@ public final class BankingController {
     }
 
     public BankingController() {
-        this.bankingService = new BankingService();
+        AccountService accountService = new AccountService(
+                new AccountManager(), new TransactionService(new TransactionManager())
+        );
+        CustomerManager customerManager = new CustomerManager();
+        this.bankingService = new BankingService(
+                new CustomerService(accountService, customerManager),
+                accountService,
+                new TransactionService(new TransactionManager())
+        );
 
         if (this.loggedIn == false) {
             this.sessionMenu();

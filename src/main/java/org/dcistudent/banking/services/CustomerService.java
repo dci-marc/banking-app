@@ -20,9 +20,9 @@ public final class CustomerService {
     @NonNull
     private final CustomerManager customerManager;
 
-    public CustomerService() {
-        this.accountService = new AccountService();
-        this.customerManager = new CustomerManager();
+    public CustomerService(AccountService accountService, CustomerManager customerManager) {
+        this.accountService = accountService;
+        this.customerManager = customerManager;
     }
 
     public CustomerInterface create() throws NoSuchAlgorithmException {
