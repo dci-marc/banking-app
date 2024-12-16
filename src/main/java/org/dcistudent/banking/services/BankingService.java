@@ -13,14 +13,18 @@ public final class BankingService {
     @NonNull
     private final AccountService accountService;
     @NonNull
-    private TransactionService transactionService;
+    private final TransactionService transactionService;
     @NonNull
     private CustomerInterface customer = new Customer();
 
-    public BankingService() {
-        this.customerService = new CustomerService();
-        this.accountService = new AccountService();
-        this.transactionService = new TransactionService();
+    public BankingService(
+            CustomerService customerService,
+            AccountService accountService,
+            TransactionService transactionService
+    ) {
+        this.customerService = customerService;
+        this.accountService = accountService;
+        this.transactionService = transactionService;
     }
 
     public CustomerInterface signup() throws NoSuchAlgorithmException {

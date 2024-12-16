@@ -39,3 +39,4 @@ build/
 
 ### Custom ###
 src/main/resources/*.csv
+/.idea/workspace.xml

@@ -6,6 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="75cc069d-a8f4-409d-93e2-8fc2c90a93ac" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/controllers/BankingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/controllers/BankingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/factories/AccountFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/factories/AccountFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/services/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/services/AccountService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/services/BankingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/services/BankingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/services/CustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/services/CustomerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/services/TransactionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/services/TransactionService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,12 +31,15 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="Security Analysis" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
   <component name="ProjectId" id="2q9vIyfDYkvjLGzmCCkHuktQ2My" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -45,7 +54,7 @@
     "Repository.Attach.Sources": "false",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "feature/implement-transaction-history",
+    "git-widget-placeholder": "feature/decouple-services-managers",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/home/student/git/banking-app",
     "node.js.detected.package.eslint": "true",
@@ -58,6 +67,23 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="QodanaHighlightedReportService">
+    <option name="localRunNotPublishedPersistedInfo">
+      <LocalReportPersistedInfo>
+        <option name="path" value="/tmp/qodana_output/qodana.sarif.json" />
+        <option name="reportGuid" value="5f25b814-8c01-45c0-be76-4c56e9c1fcca" />
+        <option name="reportName" value="banking-app/qodana/2024-12-16" />
+      </LocalReportPersistedInfo>
+    </option>
+  </component>
+  <component name="QodanaIsSelectedPersistenceService">
+    <option name="selectedOrLoading" value="true" />
+  </component>
+  <component name="QodanaReportsService">
+    <option name="descriptions">
+      <ReportDescription localRun="true" path="/tmp/qodana_output/qodana.sarif.json" reportGuid="5f25b814-8c01-45c0-be76-4c56e9c1fcca" reportId="banking-app/qodana/2024-12-16" />
+    </option>
+  </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="org.dcistudent.banking.interfaces.managers" />
@@ -91,7 +117,8 @@
       <updated>1734087529675</updated>
       <workItem from="1734087530804" duration="10043000" />
       <workItem from="1734097582315" duration="4467000" />
-      <workItem from="1734102058490" duration="63000" />
+      <workItem from="1734102058490" duration="592000" />
+      <workItem from="1734335755372" duration="3801000" />
     </task>
     <servers />
   </component>
