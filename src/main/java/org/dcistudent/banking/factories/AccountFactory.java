@@ -26,8 +26,7 @@ public final class AccountFactory {
 
     @NonNull
     public static AccountInterface create(Integer id) {
-        String accountId;
-        accountId = UUID.randomUUID().toString();
+        String accountId = UUID.randomUUID().toString();
 
         return switch (id) {
             case 1 -> new SilverAccount(accountId);

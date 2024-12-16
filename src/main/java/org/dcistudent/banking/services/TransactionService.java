@@ -19,8 +19,8 @@ public class TransactionService {
     @NonNull
     private final TransactionManager transactionManager;
 
-    public TransactionService() {
-        this.transactionManager = new TransactionManager();
+    public TransactionService(TransactionManager transactionManager) {
+        this.transactionManager = transactionManager;
     }
 
     public void getTransactionsByDays(AccountInterface account) {

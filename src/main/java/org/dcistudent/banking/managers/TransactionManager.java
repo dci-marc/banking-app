@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class TransactionManager extends AbstractManager {
-    private static final String FILE_PATH = "src/main/resources/transactions.csv";
+    private static final String FILE_PATH = "src/main/resources/db/transactions.csv";
 
     public TransactionManager() {
         super(FILE_PATH);

@@ -17,6 +17,7 @@ import org.dcistudent.banking.models.Transaction;
 import org.dcistudent.banking.renderers.ScannerRenderer;
 
 import java.util.InputMismatchException;
+import java.util.Optional;
 
 public final class AccountService {
     @NonNull
@@ -24,14 +25,14 @@ public final class AccountService {
     @NonNull
     private final TransactionService transactionService;
 
-    public AccountService() {
-        this.accountManager = new AccountManager();
-        this.transactionService = new TransactionService();
+    public AccountService(AccountManager accountManager, TransactionService transactionService) {
+        this.accountManager = accountManager;
+        this.transactionService = transactionService;
     }
 
     @NonNull
     public AccountInterface create(CustomerInterface customer) {
-        AccountInterface account = null;
+        Optional<AccountInterface> account = Optional.empty();
         Integer accountType = 0;
 
         ScannerRenderer.renderSeparated("Bank Account Creation");
@@ -48,23 +49,30 @@ public final class AccountService {
         }
 
         try {
-            account = AccountFactory.create(accountType);
+            account = Optional.of(AccountFactory.create(accountType));
         } catch (IllegalArgumentException e) {
             ScannerRenderer.renderSeparated(e.getMessage());
             this.create(customer);
         }
-        account.setCustomerId(customer.getId());
-        customer.setAccount(account);
 
-        this
-                .createAccountSecurity(customer)
-                .createAccountInitialDeposit(customer)
-                .createAccountWithdrawLimit(customer)
-        ;
+        account.ifPresent(obj -> {
+            obj.setCustomerId(customer.getId());
+            customer.setAccount(obj);
 
-        this.accountManager.persist(new AccountHydrator(), AccountHydrator.hydrate(account));
+            this
+                    .createAccountSecurity(customer)
+                    .createAccountInitialDeposit(customer)
+                    .createAccountWithdrawLimit(customer)
+            ;
 
-        return account;
+            this.accountManager.persist(new AccountHydrator(), AccountHydrator.hydrate(obj));
+        });
+
+        if (account.isPresent() == false) {
+            return this.create(customer);
+        }
+
+        return account.get();
     }
 
     @NonNull
