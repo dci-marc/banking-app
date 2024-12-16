@@ -18,11 +18,12 @@ public final class Customer implements EntityInterface {
 
     @Override
     public String toString() {
-        return this.getId() +
-                "," + this.getUsername() +
-                "," + this.getPassword() +
-                "," + this.getFirstName() +
-                "," + this.getActive()
-        ;
+        return String.join(",",
+                this.getId(),
+                this.getUsername(),
+                this.getPassword(),
+                this.getFirstName(),
+                this.getActive().toString()
+        );
     }
 }

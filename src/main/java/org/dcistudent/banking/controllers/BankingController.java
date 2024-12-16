@@ -25,14 +25,15 @@ public final class BankingController {
     }
 
     public BankingController() {
+        TransactionManager transactionManager = new TransactionManager();
         AccountService accountService = new AccountService(
-                new AccountManager(), new TransactionService(new TransactionManager())
+                new AccountManager(), new TransactionService(transactionManager)
         );
-        CustomerManager customerManager = new CustomerManager();
+
         this.bankingService = new BankingService(
-                new CustomerService(accountService, customerManager),
+                new CustomerService(accountService, new CustomerManager()),
                 accountService,
-                new TransactionService(new TransactionManager())
+                new TransactionService(transactionManager)
         );
 
         if (this.loggedIn == false) {
