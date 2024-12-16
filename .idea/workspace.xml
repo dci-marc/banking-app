@@ -7,11 +7,9 @@
     <list default="true" id="75cc069d-a8f4-409d-93e2-8fc2c90a93ac" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/controllers/BankingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/controllers/BankingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/factories/AccountFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/factories/AccountFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/services/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/services/AccountService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/services/BankingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/services/BankingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/services/CustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/services/CustomerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/services/TransactionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/services/TransactionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/entities/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/entities/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/entities/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/entities/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/entities/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/entities/Transaction.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +52,7 @@
     "Repository.Attach.Sources": "false",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "feature/decouple-services-managers",
+    "git-widget-placeholder": "feature/implement-join-string-object",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/home/student/git/banking-app",
     "node.js.detected.package.eslint": "true",
@@ -118,27 +116,11 @@
       <workItem from="1734087530804" duration="10043000" />
       <workItem from="1734097582315" duration="4467000" />
       <workItem from="1734102058490" duration="592000" />
-      <workItem from="1734335755372" duration="3801000" />
+      <workItem from="1734335755372" duration="5965000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/dcistudent/banking/managers/AbstractManager.java</url>
-          <line>82</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/dcistudent/banking/managers/AbstractManager.java</url>
-          <line>56</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

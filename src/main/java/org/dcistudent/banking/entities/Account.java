@@ -22,13 +22,15 @@ public final class Account implements EntityInterface {
 
     @Override
     public String toString() {
-        return this.getId() +
-                "," + this.getCustomerId() +
-                "," + this.getPin() +
-                "," + this.getAccountType() +
-                "," + this.getBalance() +
-                "," + this.getOverdraftCount() +
-                "," + this.getActive()
-        ;
+        return String.join(
+                ",",
+                this.getId(),
+                this.getCustomerId(),
+                this.getPin().toString(),
+                this.getAccountType().toString(),
+                this.getBalance().toString(),
+                this.getOverdraftCount().toString(),
+                this.getActive().toString()
+        );
     }
 }

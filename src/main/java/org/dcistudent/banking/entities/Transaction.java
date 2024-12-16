@@ -28,13 +28,15 @@ public final class Transaction implements EntityInterface {
 
     @Override
     public String toString() {
-        return this.getId() +
-                "," + this.getAccountId() +
-                "," + this.getAmount() +
-                "," + this.getBalanceBefore() +
-                "," + this.getBalanceAfter() +
-                "," + this.getDatetime() +
-                "," + this.getActive()
-        ;
+        return String.join(
+                ",",
+                this.getId(),
+                this.getAccountId(),
+                this.getAmount().toString(),
+                this.getBalanceBefore().toString(),
+                this.getBalanceAfter().toString(),
+                this.getDatetime(),
+                this.getActive().toString()
+        );
     }
 }
