@@ -3,6 +3,7 @@ package org.dcistudent.banking.controllers;
 import org.dcistudent.banking.exceptions.validations.customers.PasswordValidationException;
 import org.dcistudent.banking.facades.ScannerFacade;
 import org.dcistudent.banking.interfaces.models.CustomerInterface;
+import org.dcistudent.banking.loggers.JsonLogger;
 import org.dcistudent.banking.managers.AccountManager;
 import org.dcistudent.banking.managers.CustomerManager;
 import org.dcistudent.banking.managers.TransactionManager;
@@ -13,9 +14,11 @@ import org.dcistudent.banking.services.CustomerService;
 import org.dcistudent.banking.services.TransactionService;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.logging.Logger;
 
 public final class BankingController {
     private final BankingService bankingService;
+    private final Logger logger = JsonLogger.getLogger();
     private Boolean loggedIn = false;
     private static Integer loginAttempts = 1;
     private static final Integer MAX_LOGIN_ATTEMPTS = 3;
@@ -52,6 +55,7 @@ public final class BankingController {
         try {
             this.processSessionMenu();
         } catch (Exception e) {
+            this.logger.severe(e.getMessage());
             ScannerRenderer.renderSeparated(e.getMessage());
             this.processSessionMenu();
         }
@@ -65,6 +69,7 @@ public final class BankingController {
         try {
             option = ScannerFacade.getInt();
         } catch (IllegalArgumentException e) {
+            this.logger.severe(e.getMessage());
             ScannerRenderer.renderSeparated(e.getMessage());
             this.sessionMenu();
             return;
@@ -77,6 +82,7 @@ public final class BankingController {
                     ScannerRenderer.renderSeparated("Welcome, " + customer + "! Please login now.");
                     this.sessionMenu();
                 } catch (Exception e) {
+                    this.logger.severe(e.getMessage());
                     ScannerRenderer.renderSeparated(e.getMessage());
                     this.sessionMenu();
                 }
@@ -88,9 +94,11 @@ public final class BankingController {
                     this.loggedIn = true;
                     this.customerMenu();
                 } catch (Exception e) {
+                    this.logger.severe(e.getMessage());
                     loginAttempts++;
                     ScannerRenderer.renderSeparated(e.getMessage());
                     if (loginAttempts > MAX_LOGIN_ATTEMPTS) {
+                        this.logger.severe("Too many login attempts. Exiting.");
                         ScannerRenderer.renderSeparated("Bye, bye hacker!.");
                         System.exit(42);
                     }
@@ -102,7 +110,9 @@ public final class BankingController {
                 ScannerRenderer.renderSeparated("Bye, bye.");
                 System.exit(0);
             }
-            default -> ScannerRenderer.renderSeparated("Invalid option. Please try again.");
+            default -> {
+                ScannerRenderer.renderSeparated("Invalid option. Please try again.");
+            }
         }
 
         this.sessionMenu();
@@ -121,6 +131,7 @@ public final class BankingController {
         try {
             this.processCustomerMenu();
         } catch (Exception e) {
+            this.logger.severe(e.getMessage());
             ScannerRenderer.renderSeparated(e.getMessage());
             this.processCustomerMenu();
         }
@@ -133,6 +144,7 @@ public final class BankingController {
         try {
             option = ScannerFacade.getInt();
         } catch (IllegalArgumentException e) {
+            this.logger.severe(e.getMessage());
             ScannerRenderer.renderSeparated(e.getMessage());
             this.customerMenu();
             return;
@@ -146,6 +158,7 @@ public final class BankingController {
                 try {
                     this.bankingService.deposit();
                 } catch (Exception e) {
+                    this.logger.severe(e.getMessage());
                     ScannerRenderer.renderSeparated(e.getMessage());
                     this.customerMenu();
                 }
@@ -158,6 +171,7 @@ public final class BankingController {
                 try {
                     this.bankingService.withdraw();
                 } catch (Exception e) {
+                    this.logger.severe(e.getMessage());
                     ScannerRenderer.renderSeparated(e.getMessage());
                     this.customerMenu();
                 }
@@ -170,6 +184,7 @@ public final class BankingController {
                 try {
                     this.bankingService.transfer();
                 } catch (Exception e) {
+                    this.logger.severe(e.getMessage());
                     ScannerRenderer.renderSeparated(e.getMessage());
                     this.customerMenu();
                 }
@@ -182,6 +197,7 @@ public final class BankingController {
                 try {
                     this.bankingService.resetPassword();
                 } catch (NoSuchAlgorithmException | PasswordValidationException e) {
+                    this.logger.severe(e.getMessage());
                     ScannerRenderer.renderSeparated(e.getMessage());
                     this.customerMenu();
                 }
@@ -192,9 +208,7 @@ public final class BankingController {
 
                 this.sessionMenu();
             }
-            case 6 -> {
-                this.bankingService.transactions();
-            }
+            case 6 -> this.bankingService.transactions();
             case 7 -> {
                 this.bankingService.closeAccount();
                 this.loggedIn = false;
