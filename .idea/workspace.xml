@@ -5,228 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="75cc069d-a8f4-409d-93e2-8fc2c90a93ac" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/commons-logging-1.1.0.jboss.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/lombok-1.18.36.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/spring-security-crypto-6.4.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/controllers/BankingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/banking/controllers/BankingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/entities/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/banking/entities/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/entities/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/banking/entities/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/entities/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/banking/entities/Transaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/exceptions/managers/criterias/CriteriaExceptionNotSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/banking/exceptions/managers/criterias/CriteriaExceptionNotSet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/exceptions/managers/criterias/CriteriaNotFulFilledException.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/banking/exceptions/managers/criterias/CriteriaNotFulFilledException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/exceptions/managers/criterias/DateTimeMissingException.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/banking/exceptions/managers/criterias/DateTimeMissingException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/exceptions/managers/criterias/DateTimeValidationException.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/banking/exceptions/managers/criterias/DateTimeValidationException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/exceptions/managers/criterias/IdMissingException.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/banking/exceptions/managers/criterias/IdMissingException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/exceptions/managers/criterias/IdValidationException.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/banking/exceptions/managers/criterias/IdValidationException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/exceptions/transfers/BankTransferException.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/banking/exceptions/transfers/BankTransferException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/exceptions/validations/accounts/LimitValidationException.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/banking/exceptions/validations/accounts/LimitValidationException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/exceptions/validations/accounts/PinValidationException.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/banking/exceptions/validations/accounts/PinValidationException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/exceptions/validations/customers/PasswordValidationException.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/banking/exceptions/validations/customers/PasswordValidationException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/exceptions/validations/customers/UsernameValidationException.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/banking/exceptions/validations/customers/UsernameValidationException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/facades/ScannerFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/banking/facades/ScannerFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/factories/AccountFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/banking/factories/AccountFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/hydrators/AbstractHydrator.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/banking/hydrators/AbstractHydrator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/hydrators/AccountHydrator.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/banking/hydrators/AccountHydrator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/hydrators/CustomerHydrator.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/banking/hydrators/CustomerHydrator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/hydrators/TransactionHydrator.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/banking/hydrators/TransactionHydrator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/interfaces/HydratorInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/banking/interfaces/HydratorInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/interfaces/entities/EntityInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/banking/interfaces/entities/EntityInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/interfaces/managers/AbstractManagerInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/banking/interfaces/managers/AbstractManagerInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/interfaces/managers/criterias/BaseCriteriaInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/banking/interfaces/managers/criterias/BaseCriteriaInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/interfaces/models/AccountInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/banking/interfaces/models/AccountInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/interfaces/models/CustomerInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/banking/interfaces/models/CustomerInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/interfaces/models/TransactionInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/banking/interfaces/models/TransactionInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/loggers/JsonLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/banking/loggers/JsonLogger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/loggers/formatters/JsonFormatter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/banking/loggers/formatters/JsonFormatter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/managers/AbstractManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/banking/managers/AbstractManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/managers/AccountManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/banking/managers/AccountManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/managers/CustomerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/banking/managers/CustomerManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/managers/TransactionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/banking/managers/TransactionManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/managers/criterias/BaseCriteria.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/banking/managers/criterias/BaseCriteria.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/managers/criterias/FindByDateTime.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/banking/managers/criterias/FindByDateTime.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/managers/criterias/FindById.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/banking/managers/criterias/FindById.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/managers/criterias/FindByIds.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/banking/managers/criterias/FindByIds.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/managers/criterias/FindByUuid.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/banking/managers/criterias/FindByUuid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/models/AbstractAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/banking/models/AbstractAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/models/CheckingAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/banking/models/CheckingAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/models/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/banking/models/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/models/GoldAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/banking/models/GoldAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/models/PlatinumAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/banking/models/PlatinumAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/models/SavingsAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/banking/models/SavingsAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/models/SilverAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/banking/models/SilverAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/models/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/banking/models/Transaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/renderers/ScannerRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/banking/renderers/ScannerRenderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/services/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/banking/services/AccountService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/services/BankingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/banking/services/BankingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/services/CustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/banking/services/CustomerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dcistudent/banking/services/TransactionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/banking/services/TransactionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/allclasses-index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/allpackages-index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/element-list" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/help-doc.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/index-files/index-1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/index-files/index-10.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/index-files/index-11.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/index-files/index-12.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/index-files/index-13.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/index-files/index-14.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/index-files/index-15.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/index-files/index-16.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/index-files/index-17.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/index-files/index-18.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/index-files/index-19.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/index-files/index-2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/index-files/index-20.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/index-files/index-3.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/index-files/index-4.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/index-files/index-5.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/index-files/index-6.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/index-files/index-7.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/index-files/index-8.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/index-files/index-9.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/legal/ADDITIONAL_LICENSE_INFO" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/legal/ASSEMBLY_EXCEPTION" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/legal/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/legal/dejavufonts.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/legal/jquery.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/legal/jqueryUI.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/member-search-index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/module-search-index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/controllers/BankingController.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/controllers/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/controllers/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/entities/Account.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/entities/Customer.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/entities/Transaction.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/entities/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/entities/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/exceptions/managers/criterias/CriteriaExceptionNotSet.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/exceptions/managers/criterias/CriteriaNotFulFilledException.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/exceptions/managers/criterias/DateTimeMissingException.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/exceptions/managers/criterias/DateTimeValidationException.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/exceptions/managers/criterias/IdMissingException.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/exceptions/managers/criterias/IdValidationException.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/exceptions/managers/criterias/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/exceptions/managers/criterias/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/exceptions/transfers/BankTransferException.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/exceptions/transfers/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/exceptions/transfers/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/exceptions/validations/accounts/LimitValidationException.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/exceptions/validations/accounts/PinValidationException.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/exceptions/validations/accounts/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/exceptions/validations/accounts/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/exceptions/validations/customers/PasswordValidationException.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/exceptions/validations/customers/UsernameValidationException.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/exceptions/validations/customers/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/exceptions/validations/customers/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/facades/ScannerFacade.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/facades/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/facades/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/factories/AccountFactory.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/factories/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/factories/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/hydrators/AbstractHydrator.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/hydrators/AccountHydrator.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/hydrators/CustomerHydrator.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/hydrators/TransactionHydrator.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/hydrators/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/hydrators/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/interfaces/HydratorInterface.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/interfaces/entities/EntityInterface.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/interfaces/entities/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/interfaces/entities/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/interfaces/managers/AbstractManagerInterface.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/interfaces/managers/criterias/BaseCriteriaInterface.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/interfaces/managers/criterias/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/interfaces/managers/criterias/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/interfaces/managers/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/interfaces/managers/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/interfaces/models/AccountInterface.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/interfaces/models/CustomerInterface.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/interfaces/models/TransactionInterface.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/interfaces/models/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/interfaces/models/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/interfaces/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/interfaces/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/managers/AbstractManager.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/managers/AccountManager.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/managers/CustomerManager.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/managers/TransactionManager.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/managers/criterias/BaseCriteria.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/managers/criterias/FindByDateTime.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/managers/criterias/FindById.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/managers/criterias/FindByUuid.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/managers/criterias/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/managers/criterias/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/managers/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/managers/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/models/AbstractAccount.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/models/CheckingAccount.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/models/Customer.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/models/GoldAccount.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/models/PlatinumAccount.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/models/SavingsAccount.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/models/SilverAccount.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/models/Transaction.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/models/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/models/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/renderers/ScannerRenderer.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/renderers/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/renderers/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/services/AccountService.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/services/BankingService.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/services/CustomerService.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/services/TransactionService.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/services/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/org/dcistudent/banking/services/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/overview-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/overview-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/package-search-index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/resource-files/copy.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/resource-files/fonts/DejaVuLGCSans-Bold.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/resource-files/fonts/DejaVuLGCSans-Bold.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/resource-files/fonts/DejaVuLGCSans-BoldOblique.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/resource-files/fonts/DejaVuLGCSans-BoldOblique.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/resource-files/fonts/DejaVuLGCSans-Oblique.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/resource-files/fonts/DejaVuLGCSans-Oblique.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/resource-files/fonts/DejaVuLGCSans.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/resource-files/fonts/DejaVuLGCSans.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/resource-files/fonts/DejaVuLGCSansMono-Bold.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/resource-files/fonts/DejaVuLGCSansMono-Bold.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/resource-files/fonts/DejaVuLGCSansMono-BoldOblique.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/resource-files/fonts/DejaVuLGCSansMono-BoldOblique.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/resource-files/fonts/DejaVuLGCSansMono-Oblique.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/resource-files/fonts/DejaVuLGCSansMono-Oblique.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/resource-files/fonts/DejaVuLGCSansMono.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/resource-files/fonts/DejaVuLGCSansMono.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/resource-files/fonts/DejaVuLGCSerif-Bold.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/resource-files/fonts/DejaVuLGCSerif-Bold.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/resource-files/fonts/DejaVuLGCSerif-BoldItalic.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/resource-files/fonts/DejaVuLGCSerif-BoldItalic.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/resource-files/fonts/DejaVuLGCSerif-Italic.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/resource-files/fonts/DejaVuLGCSerif-Italic.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/resource-files/fonts/DejaVuLGCSerif.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/resource-files/fonts/DejaVuLGCSerif.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/resource-files/fonts/dejavu.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/resource-files/glass.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/resource-files/jquery-ui.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/resource-files/link.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/resource-files/stylesheet.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/resource-files/x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/script-files/jquery-3.7.1.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/script-files/jquery-ui.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/script-files/script.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/script-files/search-page.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/script-files/search.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/search.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/serialized-form.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/tag-search-index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javadoc/type-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -332,32 +112,10 @@
       <recent name="org.dcistudent.banking.managers" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.BankingController">
-    <configuration name="Banking" type="Application" factoryName="Application">
-      <option name="ALTERNATIVE_JRE_PATH" value="17" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="MAIN_CLASS_NAME" value="banking.controllers.BankingController" />
-      <module name="banking-app" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="BankingController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="banking.controllers.BankingController" />
-      <module name="banking-app.app.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="banking.controllers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager">
     <recent_temporary>
       <list>
-        <item itemvalue="Application.BankingController" />
+        <item itemvalue="Application.Banking" />
       </list>
     </recent_temporary>
   </component>
@@ -396,7 +154,7 @@
       <workItem from="1737543365186" duration="100000" />
       <workItem from="1737543477775" duration="92000" />
       <workItem from="1737543584763" duration="206000" />
-      <workItem from="1737543805619" duration="571000" />
+      <workItem from="1737543805619" duration="2228000" />
     </task>
     <servers />
   </component>
